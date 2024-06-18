@@ -312,7 +312,7 @@ public class AddingReservationWindow extends Application {
 						if(comboBox2.getValue().toString().equals("February")) month=2;
 						if(comboBox2.getValue().toString().equals("March")) month=3;
 						if(comboBox2.getValue().toString().equals("April")) month=4;
-						if(comboBox2.getValue().toString().equals("JMay")) month=5;
+						if(comboBox2.getValue().toString().equals("May")) month=5;
 						if(comboBox2.getValue().toString().equals("June")) month=6;
 						if(comboBox2.getValue().toString().equals("July")) month=7;
 						if(comboBox2.getValue().toString().equals("August")) month=8;
