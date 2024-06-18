@@ -160,6 +160,19 @@ public class DBConfigurationWindow extends Application {
 				@Override
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
+					try {
+						dao.createPrefDBInformationTable();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					try {
+						dao.insertIntoPrefDBInformationTable
+						("Sqlite", "", "", "hotelmanagement", "", "");
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					if(comboBox.getValue()!=null)
 					{
 					try {
@@ -234,25 +247,11 @@ public class DBConfigurationWindow extends Application {
 						Dao.setUname(textField4.getText());
 						Dao.setPass(passwordField.getText());
 					}
-//					try {
-//						dao.createPrefDBInformationTable();
-//					} catch (SQLException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//					try {
-//						dao.insertIntoPrefDBInformationTable
-//						(comboBox.getValue().toString(), 
-//								textField.getText(), 
-//								textField2.getText(), textField3.getText(),
-//								textField4.getText(), passwordField.getText());
-//					} catch (SQLException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
+					
 					try {
 						if(dao.getEmptyCon()!=null)
 						{
+							
 						Group rootProgramWindow=new Group();
 						Scene sceneProgramWindow=new Scene(rootProgramWindow,1200,700);
 						Stage stageProgramWindow=new Stage();

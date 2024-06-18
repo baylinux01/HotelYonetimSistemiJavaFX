@@ -238,6 +238,113 @@ public class LastDBWindow extends Application {
 					try {
 						if(dao.getEmptyCon()!=null)
 						{
+							String Host="localhost";
+							String Port="";
+							String PrefSchema="mySchema";
+							Dao.setSqliteDBClassName("org.sqlite.JDBC");
+							Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
+							Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema+".sqlite");
+							Dao.setClassName(Dao.getSqliteDBClassName());
+							Dao.setUrl(Dao.getSqliteDBUrl());
+							Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
+							Dao.setHost("localhost");
+							Dao.setPort("");
+							Dao.setPrefSchema("mySchema");
+							Dao.setUname("root");
+							Dao.setPass("myPass");
+							Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host+":"+Port+"/");
+							Dao.setMySqlUrl("jdbc:mysql://"+Host+":"+Port+"/"+PrefSchema);
+							Dao.setMariaDBEmptyUrl("jdbc:mariadb://"+Host+":"+Port+"/");
+							Dao.setMariaDBUrl("jdbc:mariadb://"+Host+":"+Port+"/"+PrefSchema);
+							Dao.setPostgreEmptyUrl("jdbc:postgresql://"+Host+":"+Port+"/");
+							Dao.setPostgreUrl("jdbc:postgresql://"+Host+":"+Port+"/postgres?currentSchema="+PrefSchema);
+							try {
+								dao.createPrefDBInformationTable();
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							try {
+								dao.insertIntoPrefDBInformationTable
+								("Sqlite", "", "", "hotelmanagement", "", "");
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							if(comboBox.getValue()!=null)
+							{
+							try {
+								dao.updatePrefDBInformationTable
+								(comboBox.getValue().toString(), textField.getText(),
+										textField2.getText(), textField3.getText(), 
+										textField4.getText(), "");
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							if(comboBox.getValue().toString().equals("Sqlite"))
+							{
+								Dao.setSqliteDBClassName("org.sqlite.JDBC");
+								Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
+								Dao.setSqliteDBUrl("jdbc:sqlite:"+textField3.getText()+".sqlite");
+								Dao.setClassName(Dao.getSqliteDBClassName());
+								Dao.setUrl(Dao.getSqliteDBUrl());
+								Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
+								Dao.setHost(textField.getText());
+								Dao.setPort(textField2.getText());
+								Dao.setPrefSchema(textField3.getText());
+								Dao.setUname(textField4.getText());
+								Dao.setPass(passwordField.getText());
+							}
+							else if(comboBox.getValue().toString().equals("MySql"))
+							{
+								Dao.setMySqlClassName("com.mysql.cj.jdbc.Driver");
+								Dao.setMySqlEmptyUrl("jdbc:mysql://"+textField.getText()+
+										":"+textField2.getText()+"/");
+								Dao.setMySqlUrl("jdbc:mysql://"+textField.getText()+
+										":"+textField2.getText()+"/"+textField3.getText());
+								Dao.setClassName(Dao.getMySqlClassName());
+								Dao.setUrl(Dao.getMySqlUrl());
+								Dao.setEmptyUrl(Dao.getMySqlEmptyUrl());
+								Dao.setHost(textField.getText());
+								Dao.setPort(textField2.getText());
+								Dao.setPrefSchema(textField3.getText());
+								Dao.setUname(textField4.getText());
+								Dao.setPass(passwordField.getText());
+							}
+							else if(comboBox.getValue().toString().equals("MariaDB"))
+							{
+								Dao.setMariaDBClassName("org.mariadb.jdbc.Driver");
+								Dao.setMariaDBEmptyUrl("jdbc:mariadb://"+textField.getText()+
+										":"+textField2.getText()+"/");
+								Dao.setMariaDBUrl("jdbc:mariadb://"+textField.getText()+
+										":"+textField2.getText()+"/"+textField3.getText());
+								Dao.setClassName(Dao.getMariaDBClassName());
+								Dao.setUrl(Dao.getMariaDBUrl());
+								Dao.setEmptyUrl(Dao.getMariaDBEmptyUrl());
+								Dao.setHost(textField.getText());
+								Dao.setPort(textField2.getText());
+								Dao.setPrefSchema(textField3.getText());
+								Dao.setUname(textField4.getText());
+								Dao.setPass(passwordField.getText());
+							}
+							else if(comboBox.getValue().toString().equals("PostgreSql"))
+							{
+								Dao.setPostgreClassName("org.postgresql.Driver");
+								Dao.setPostgreEmptyUrl("jdbc:postgresql://"+textField.getText()+
+										":"+textField2.getText()+"/");
+								Dao.setPostgreUrl("jdbc:postgresql://"+textField.getText()+
+										":"+textField2.getText()+
+										"/postgres?currentSchema="+textField3.getText());
+								Dao.setClassName(Dao.getPostgreClassName());
+								Dao.setUrl(Dao.getPostgreUrl());
+								Dao.setEmptyUrl(Dao.getPostgreEmptyUrl());
+								Dao.setHost(textField.getText());
+								Dao.setPort(textField2.getText());
+								Dao.setPrefSchema(textField3.getText());
+								Dao.setUname(textField4.getText());
+								Dao.setPass(passwordField.getText());
+							}
 						Group rootProgramWindow=new Group();
 						Scene sceneProgramWindow=new Scene(rootProgramWindow,1200,700);
 						Stage stageProgramWindow=new Stage();
@@ -265,12 +372,12 @@ public class LastDBWindow extends Application {
 						}
 						else
 						{
-							String Host="localhost";
-							String Port="";
-							String PrefSchema="mySchema";
+							String Host2="localhost";
+							String Port2="";
+							String PrefSchema2="mySchema";
 							Dao.setSqliteDBClassName("org.sqlite.JDBC");
 							Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
-							Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema+".sqlite");
+							Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema2+".sqlite");
 							Dao.setClassName(Dao.getSqliteDBClassName());
 							Dao.setUrl(Dao.getSqliteDBUrl());
 							Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
@@ -279,14 +386,14 @@ public class LastDBWindow extends Application {
 							Dao.setPrefSchema("mySchema");
 							Dao.setUname("root");
 							Dao.setPass("myPass");
-							Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host+":"+Port+"/");
-							Dao.setMySqlUrl("jdbc:mysql://"+Host+":"+Port+"/"+PrefSchema);
-							Dao.setMariaDBEmptyUrl("jdbc:mariadb://"+Host+":"+Port+"/");
-							Dao.setMariaDBUrl("jdbc:mariadb://"+Host+":"+Port+"/"+PrefSchema);
-							Dao.setPostgreEmptyUrl("jdbc:postgresql://"+Host+":"+Port+"/");
-							Dao.setPostgreUrl("jdbc:postgresql://"+Host+":"+Port+"/postgres?currentSchema="+PrefSchema);
-						}
-					} catch (ClassNotFoundException | SQLException e) {
+							Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host2+":"+Port2+"/");
+							Dao.setMySqlUrl("jdbc:mysql://"+Host2+":"+Port2+"/"+PrefSchema2);
+							Dao.setMariaDBEmptyUrl("jdbc:mariadb://"+Host2+":"+Port2+"/");
+							Dao.setMariaDBUrl("jdbc:mariadb://"+Host2+":"+Port2+"/"+PrefSchema2);
+							Dao.setPostgreEmptyUrl("jdbc:postgresql://"+Host2+":"+Port2+"/");
+							Dao.setPostgreUrl("jdbc:postgresql://"+Host2+":"+Port2+"/postgres?currentSchema="+PrefSchema2);
+						}}
+					}catch (ClassNotFoundException | SQLException e) {
 						// TODO Auto-generated catch block
 						String Host="localhost";
 						String Port="";
