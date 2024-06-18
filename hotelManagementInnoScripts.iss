@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Hotel Management"
-#define MyAppVersion "5.1"
+#define MyAppVersion "5.2"
 #define MyAppPublisher "baylinux01"
 #define MyAppURL "https://github.com/baylinux01"
 #define MyAppExeName "hotelManagementSystemJavaFXMaven-0.0.1-SNAPSHOT.jar"
@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{206E107F-BE8D-41C9-B749-B1CE2C8A613E}
+AppId={{54D77BE6-5942-4C79-A5EC-C282F8080F8C}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -29,7 +29,7 @@ LicenseFile=G:\HotelManagementSystemJavaFX\LICENSE
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=G:\HotelManagementSystemJavaFX
-OutputBaseFilename=hotelManagementSetup
+OutputBaseFilename=HotelManagementSetup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -56,7 +56,6 @@ Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename:"{app}\hotelLogo.ico";
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename:"{app}\hotelLogo.ico";
-
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: shellexec postinstall skipifsilent
 

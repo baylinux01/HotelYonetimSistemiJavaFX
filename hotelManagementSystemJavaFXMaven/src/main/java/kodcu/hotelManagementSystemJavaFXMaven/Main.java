@@ -45,12 +45,12 @@ public class Main extends Application {
 			
 			Pane pane=new Pane();
 			pane.setPrefSize(700, 700);
-			pane.setLayoutX(500);
+			pane.setLayoutX(400);
 			pane.setLayoutY(200);
 			root.getChildren().add(pane);
 			
-			Label label=new Label("Choose Database");
-			label.setPrefSize(300, 20);
+			Label label=new Label("Decide Which Database You Want To Use");
+			label.setPrefSize(400, 20);
 			label.setLayoutX(0);
 			label.setLayoutY(0);
 			label.setStyle("-fx-font-size:20px;");
@@ -86,8 +86,8 @@ public class Main extends Application {
 				
 			};
 			
-			Button button=new Button("Continue using my last configuration");
-			button.setPrefSize(250, 20);
+			Button button=new Button("Continue using the last configuration");
+			button.setPrefSize(400, 20);
 			button.setLayoutX(0);
 			button.setLayoutY(40);
 			button.setOnAction(continueUsingMyLastConfigurationEventHandler);
@@ -127,8 +127,8 @@ public class Main extends Application {
 				
 			};
 			
-			Button button2=new Button("Continue using Sqlite");
-			button2.setPrefSize(250, 20);
+			Button button2=new Button("Continue using Sqlite As Schema Name = \"myschema\"");
+			button2.setPrefSize(400, 20);
 			button2.setLayoutX(0);
 			button2.setLayoutY(80);
 			button2.setOnAction(continueUsingSqliteEventHandler);
@@ -163,8 +163,8 @@ public class Main extends Application {
 				
 			};
 			
-			Button button3=new Button("Continue using Another DB");
-			button3.setPrefSize(250, 20);
+			Button button3=new Button("Continue using Another DB and/or another Schema");
+			button3.setPrefSize(400, 20);
 			button3.setLayoutX(0);
 			button3.setLayoutY(120);
 			button3.setOnAction(continueUsingAnotherDBEventHandler);
