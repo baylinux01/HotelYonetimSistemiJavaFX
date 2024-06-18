@@ -291,7 +291,7 @@ public class DBConfigurationWindow extends Application {
 							Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
 							Dao.setHost("localhost");
 							Dao.setPort("");
-							Dao.setPrefSchema("mySchema");
+							Dao.setPrefSchema("myschema");
 							Dao.setUname("root");
 							Dao.setPass("myPass");
 							dao.createDatabase("myschema");
