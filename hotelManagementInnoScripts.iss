@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Hotel Management Application"
-#define MyAppVersion "4"
+#define MyAppVersion "4.1"
 #define MyAppPublisher "baylinux01"
 #define MyAppURL "https://www.github.com/baylinux01"
 #define MyAppExeName "hotelManagementSystemJavaFXMaven-0.0.1-SNAPSHOT.jar"
@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{4DE3145D-3459-4AA0-A00D-701E8EC6D59A}
+AppId={{13A0D823-31EA-4CD2-95AF-61C739F034CC}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -44,6 +44,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "G:\HotelManagementSystemJavaFX\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "G:\HotelManagementSystemJavaFX\hotelLogo.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "G:\HotelManagementSystemJavaFX\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
+Source: "G:\HotelManagementSystemJavaFX\README.md"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
@@ -54,8 +55,8 @@ Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; Value
 Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".myp"; ValueData: ""
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}";  IconFilename:"{app}\hotelLogo.ico";
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon ; IconFilename:"{app}\hotelLogo.ico";
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename:"{app}\hotelLogo.ico";
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename:"{app}\hotelLogo.ico";
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: shellexec postinstall skipifsilent

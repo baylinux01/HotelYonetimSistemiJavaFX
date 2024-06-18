@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -428,6 +429,12 @@ public class LastDBWindow extends Application {
 			button.setLayoutY(280);
 			pane.getChildren().add(button);
 			button.setOnAction(startProgramEventHandler);
+			root.setOnKeyReleased(event->{
+				if(event.getCode().equals(KeyCode.ENTER))
+				{
+					button.fire();
+				}
+			});
 			
 			EventHandler<ActionEvent> goBackEventHandler=new EventHandler<ActionEvent>() 
 			{
