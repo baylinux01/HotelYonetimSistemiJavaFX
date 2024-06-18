@@ -241,7 +241,7 @@ public class LastDBWindow extends Application {
 						{
 							String Host="localhost";
 							String Port="";
-							String PrefSchema="mySchema";
+							String PrefSchema="myschema";
 							Dao.setSqliteDBClassName("org.sqlite.JDBC");
 							Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
 							Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema+".sqlite");
@@ -250,7 +250,7 @@ public class LastDBWindow extends Application {
 							Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
 							Dao.setHost("localhost");
 							Dao.setPort("");
-							Dao.setPrefSchema("mySchema");
+							Dao.setPrefSchema("myschema");
 							Dao.setUname("root");
 							Dao.setPass("myPass");
 							Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host+":"+Port+"/");
@@ -267,7 +267,7 @@ public class LastDBWindow extends Application {
 							}
 							try {
 								dao.insertIntoPrefDBInformationTable
-								("Sqlite", "", "", "hotelmanagement", "", "");
+								("Sqlite", "", "", "myschema", "", "");
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -375,7 +375,7 @@ public class LastDBWindow extends Application {
 						{
 							String Host2="localhost";
 							String Port2="";
-							String PrefSchema2="mySchema";
+							String PrefSchema2="myschema";
 							Dao.setSqliteDBClassName("org.sqlite.JDBC");
 							Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
 							Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema2+".sqlite");
@@ -384,7 +384,7 @@ public class LastDBWindow extends Application {
 							Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
 							Dao.setHost("localhost");
 							Dao.setPort("");
-							Dao.setPrefSchema("mySchema");
+							Dao.setPrefSchema("myschema");
 							Dao.setUname("root");
 							Dao.setPass("myPass");
 							Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host2+":"+Port2+"/");
@@ -398,7 +398,7 @@ public class LastDBWindow extends Application {
 						// TODO Auto-generated catch block
 						String Host="localhost";
 						String Port="";
-						String PrefSchema="mySchema";
+						String PrefSchema="myschema";
 						Dao.setSqliteDBClassName("org.sqlite.JDBC");
 						Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
 						Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema+".sqlite");
@@ -407,7 +407,7 @@ public class LastDBWindow extends Application {
 						Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
 						Dao.setHost("localhost");
 						Dao.setPort("");
-						Dao.setPrefSchema("mySchema");
+						Dao.setPrefSchema("myschema");
 						Dao.setUname("root");
 						Dao.setPass("myPass");
 						Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host+":"+Port+"/");

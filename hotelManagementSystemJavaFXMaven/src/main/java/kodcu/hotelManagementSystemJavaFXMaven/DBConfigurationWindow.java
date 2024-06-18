@@ -169,7 +169,7 @@ public class DBConfigurationWindow extends Application {
 					}
 					try {
 						dao.insertIntoPrefDBInformationTable
-						("Sqlite", "", "", "hotelmanagement", "", "");
+						("Sqlite", "", "", "myschema", "", "");
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -282,7 +282,7 @@ public class DBConfigurationWindow extends Application {
 						{
 							String Host="localhost";
 							String Port="";
-							String PrefSchema="mySchema";
+							String PrefSchema="myschema";
 							Dao.setSqliteDBClassName("org.sqlite.JDBC");
 							Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
 							Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema+".sqlite");
@@ -294,21 +294,21 @@ public class DBConfigurationWindow extends Application {
 							Dao.setPrefSchema("mySchema");
 							Dao.setUname("root");
 							Dao.setPass("myPass");
-							dao.createDatabase("hotelmanagement");
+							dao.createDatabase("myschema");
 							dao.clearPrefDBInformationTable();
 							dao.clearDefaultDBInformationTable();
 							dao.createDefaultDBInformationTable();
 							dao.insertIntoDefaultDBInformationTable
-							("Sqlite", "", "", "hotelmanagement", "", "");
+							("Sqlite", "", "", "myschema", "", "");
 							dao.insertIntoDefaultDBInformationTable
-							("MySql", "localhost","3306", "hotelmanagement","root", "");
+							("MySql", "localhost","3306", "myschema","root", "");
 							dao.insertIntoDefaultDBInformationTable
-							("MariaDB", "localhost","3306", "hotelmanagement","root", "");
+							("MariaDB", "localhost","3306", "myschema","root", "");
 							dao.insertIntoDefaultDBInformationTable
-							("PostgreSql", "localhost","5432", "hotelmanagement","postgres", "");
+							("PostgreSql", "localhost","5432", "myschema","postgres", "");
 							dao.createPrefDBInformationTable();
 							dao.insertIntoPrefDBInformationTable
-							("Sqlite", "", "", "hotelmanagement", "", "");
+							("Sqlite", "", "", "myschema", "", "");
 							Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host+":"+Port+"/");
 							Dao.setMySqlUrl("jdbc:mysql://"+Host+":"+Port+"/"+PrefSchema);
 							Dao.setMariaDBEmptyUrl("jdbc:mariadb://"+Host+":"+Port+"/");
@@ -320,7 +320,7 @@ public class DBConfigurationWindow extends Application {
 						// TODO Auto-generated catch block
 						String Host="localhost";
 						String Port="";
-						String PrefSchema="mySchema";
+						String PrefSchema="myschema";
 						Dao.setSqliteDBClassName("org.sqlite.JDBC");
 						Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
 						Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema+".sqlite");
@@ -329,11 +329,11 @@ public class DBConfigurationWindow extends Application {
 						Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
 						Dao.setHost("localhost");
 						Dao.setPort("");
-						Dao.setPrefSchema("mySchema");
+						Dao.setPrefSchema("myschema");
 						Dao.setUname("root");
 						Dao.setPass("myPass");
 						try {
-							dao.createDatabase("hotelmanagement");
+							dao.createDatabase("myschema");
 						} catch (ClassNotFoundException | SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -358,28 +358,28 @@ public class DBConfigurationWindow extends Application {
 						}
 						try {
 							dao.insertIntoDefaultDBInformationTable
-							("Sqlite", "", "", "hotelmanagement", "", "");
+							("Sqlite", "", "", "myschema", "", "");
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						try {
 							dao.insertIntoDefaultDBInformationTable
-							("MySql", "localhost","3306", "hotelmanagement","root", "");
+							("MySql", "localhost","3306", "myschema","root", "");
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						try {
 							dao.insertIntoDefaultDBInformationTable
-							("MariaDB", "localhost","3306", "hotelmanagement","root", "");
+							("MariaDB", "localhost","3306", "myschema","root", "");
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						try {
 							dao.insertIntoDefaultDBInformationTable
-							("PostgreSql", "localhost","5432", "hotelmanagement","postgres", "");
+							("PostgreSql", "localhost","5432", "myschema","postgres", "");
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -392,7 +392,7 @@ public class DBConfigurationWindow extends Application {
 						}
 						try {
 							dao.insertIntoPrefDBInformationTable
-							("Sqlite", "", "", "hotelmanagement", "", "");
+							("Sqlite", "", "", "myschema", "", "");
 						} catch (SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();

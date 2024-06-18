@@ -31,17 +31,17 @@ public class Main extends Application {
 			primaryStage.show();
 			
 			Dao dao=new Dao();
-			dao.createDatabase("hotelmanagement");
+			dao.createDatabase("myschema");
 			dao.createDefaultDBInformationTable();
 			dao.clearDefaultDBInformationTable();
 			dao.insertIntoDefaultDBInformationTable
-			("Sqlite", "", "", "hotelmanagement", "", "");
+			("Sqlite", "", "", "myschema", "", "");
 			dao.insertIntoDefaultDBInformationTable
-			("MySql", "localhost","3306", "hotelmanagement","root", "");
+			("MySql", "localhost","3306", "myschema","root", "");
 			dao.insertIntoDefaultDBInformationTable
-			("MariaDB", "localhost","3306", "hotelmanagement","root", "");
+			("MariaDB", "localhost","3306", "myschema","root", "");
 			dao.insertIntoDefaultDBInformationTable
-			("PostgreSql", "localhost","5432", "hotelmanagement","postgres", "");
+			("PostgreSql", "localhost","5432", "myschema","postgres", "");
 			
 			Pane pane=new Pane();
 			pane.setPrefSize(700, 700);

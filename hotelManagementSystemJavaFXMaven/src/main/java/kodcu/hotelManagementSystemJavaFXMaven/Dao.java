@@ -20,7 +20,7 @@ public class Dao {
 	private static String MariaDBPort="3306";
 	private static String PostgreSqlPort="5432";
 	private static String Port="";
-	private static String PrefSchema="mySchema";
+	private static String PrefSchema="myschema";
 	
 	private static String MySqlClassName="com.mysql.cj.jdbc.Driver";
 	private static String MySqlEmptyUrl="jdbc:mysql://"+Host+":"+Port+"/";
