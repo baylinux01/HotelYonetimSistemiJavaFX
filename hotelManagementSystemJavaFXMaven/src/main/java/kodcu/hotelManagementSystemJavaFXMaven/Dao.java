@@ -1178,6 +1178,57 @@ public class Dao {
 		}
 		return reservationsByRoom;
 	}
+	public List<Reservation> getReservationsByRoomNoNotInOne(long roomNo,long reservationNo) throws SQLException
+	{
+		String query="Select * From ReservationTable where RoomNo=? and ReservationNo not in (?) order by RoomNo asc";
+		List<Reservation> reservations=new ArrayList<Reservation>();
+		try {
+//			Class.forName(className);
+//			con = DriverManager.getConnection(url);
+//			con = DriverManager.getConnection(url,uname,pass);
+			con=getCon();
+			PreparedStatement st= con.prepareStatement(query);
+			st.setInt(1, (int)roomNo);
+			st.setInt(2, (int)reservationNo);
+			
+			ResultSet rs = st.executeQuery();
+			while(rs.next())
+			{
+				Reservation p=new Reservation();
+				p.setRoomNo((long)rs.getInt("RoomNo"));
+				p.setReservationNo((long)rs.getInt("ReservationNo"));
+				p.setReservationStartDate(rs.getString("ReservationStartDate"));
+				p.setReservationEndDate(rs.getString("ReservationEndDate"));
+				p.setDaysToStay((long)rs.getInt("DaysToStay"));
+				p.setPricePerDay((long)rs.getInt("PricePerDay"));
+				p.setTotalPrice((long)rs.getInt("TotalPrice"));
+				p.setPaidOrUnpaid(rs.getString("PaidOrUnpaid"));
+				p.setClientNameAndSurname(rs.getString("ClientNameAndSurname"));
+				p.setClientCellPhone(rs.getString("ClientPhoneNumber"));
+				p.setClientAddress(rs.getString("ClientAddress"));
+				reservations.add(p);
+				
+				
+			
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if(con!=null)
+			{
+				con.close();
+			}
+			
+				
+			
+		}
+		return reservations;
+	}
 	public Reservation getReservationsByReservationNo(long reservationNo) throws SQLException
 	{
 		String query="Select * From ReservationTable where ReservationNo=?";

@@ -6,7 +6,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -31,7 +33,7 @@ import javafx.stage.Stage;
 
 public class ReservationUpdatingWindow extends Application {
 	static Dao dao=new Dao();
-	static List<Room> availableRooms=new ArrayList<Room>();
+	static Set<Room> availableRooms=new LinkedHashSet<Room>();
 	static TextField textField=new TextField();
 	static TextField textField2=new TextField();
 	static TextField textField2a=new TextField();
@@ -51,10 +53,10 @@ public class ReservationUpdatingWindow extends Application {
 	static String clientAddress="";
 	static String clientNameAndSurname="";
 	static String clientPhoneNumber="";
-	static Reservation oldReservation=ProgramWindow.tableView.getSelectionModel().getSelectedItem();
-	static long oldReservationYear=Long.valueOf(oldReservation.getReservationStartDate().split("-")[2]);
-	static long oldReservationMonth=Long.valueOf(oldReservation.getReservationStartDate().split("-")[1]);
-	static long oldReservationDay=Long.valueOf(oldReservation.getReservationStartDate().split("-")[0]);
+	static Reservation oldReservation=null;
+	static long oldReservationYear=0;
+	static long oldReservationMonth=0;
+	static long oldReservationDay=0;
 	
 	public static String getClientAddress() {
 		return clientAddress;
@@ -80,12 +82,12 @@ public class ReservationUpdatingWindow extends Application {
 		AddingReservationWindow.clientPhoneNumber = clientPhoneNumber;
 	}
 
-	public static List<Room> getAvailableRooms() {
+	public static Set<Room> getAvailableRooms() {
 		return availableRooms;
 	}
 
-	public static void setAvailableRooms(List<Room> availableRooms) {
-		AddingReservationWindow.availableRooms = availableRooms;
+	public static void setAvailableRooms(Set<Room> availableRooms) {
+		AddingReservationWindow.availableRooms = (List<Room>) availableRooms;
 	}
 
 	public static long getDay() {
@@ -147,6 +149,11 @@ public class ReservationUpdatingWindow extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			oldReservation=ProgramWindow.tableView.getSelectionModel().getSelectedItem();
+			oldReservationYear=Long.valueOf(oldReservation.getReservationStartDate().split("-")[2]);
+			oldReservationMonth=Long.valueOf(oldReservation.getReservationStartDate().split("-")[1]);
+			oldReservationDay=Long.valueOf(oldReservation.getReservationStartDate().split("-")[0]);
 			
 			Pane pane=new Pane();
 			pane.setPrefSize(340, 720);
@@ -305,15 +312,10 @@ public class ReservationUpdatingWindow extends Application {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 					
-					List<Room> rooms=null;
 					
-					List<Reservation> reservationsByRoom=null;
-					try {
-						rooms=dao.getAllRooms();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					
+					List<Reservation> reservations=null;
+					
 					if(comboBox.getValue()!=null&&comboBox2.getValue()!=null&&textField.getText()!=null
 							&& textField.getText().matches("^[2-9][0-9]{3}$")&&textField2.getText()!=null
 							&&textField2.getText().matches("^[1-9][0-9]{0,}$")&&textField2a.getText()!=null
@@ -361,26 +363,20 @@ public class ReservationUpdatingWindow extends Application {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
-							try {
-								dao.deleteFromReservationTable(reservationToUpdate.getReservationNo());
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							if(rooms!=null)
-							{
-								for(Room room:rooms)
-								{
+							
+							
+								
 									try {
-										reservationsByRoom=dao.getReservationsByRoom(room.roomNo);
+										reservations=dao.getReservationsByRoomNoNotInOne
+												(reservationToUpdate.getRoomNo(),reservationToUpdate.getReservationNo());
 									} catch (SQLException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
 									}
-									if(reservationsByRoom!=null)
+									if(reservations!=null&&reservations.size()>0)
 									{
 										
-										for(Reservation reservation: reservationsByRoom)
+										for(Reservation reservation: reservations)
 										{
 											if(reservation!=null)
 											{
@@ -412,38 +408,37 @@ public class ReservationUpdatingWindow extends Application {
 												if(Edate.after(Sdate)&&dateToEnd.after(dateToStart)&&
 														((dateToStart.after(Edate)||(dateToEnd.before(Sdate)))))
 												{
-													count++;
+													try {
+														availableRooms.add(dao.getRoomByRoomNo(reservation.getRoomNo()));
+														
+													} catch (SQLException e) {
+														// TODO Auto-generated catch block
+														e.printStackTrace();
+													}
 												}
 												
 											}
 											
 										}
-										if(count>=reservationsByRoom.size())
-										{
-											availableRooms.add(room);
-										}
-										count=0;
+										
 									}
 									else
 									{
-										availableRooms.addAll(rooms);
+										try {
+											availableRooms.addAll(dao.getAllRooms());
+										} catch (SQLException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 									}
-								}
+								
 								int c=0;
 								for(Room room:availableRooms)
 								{
 									if(room.getRoomNo()==reservationToUpdate.getRoomNo())
 									{
 										try {
-											dao.insertIntoReservationTableWithReservationNo(reservationToUpdate.getReservationNo(),
-													reservationToUpdate.getRoomNo(), 
-													reservationToUpdate.getReservationStartDate(), 
-													reservationToUpdate.getReservationEndDate(), reservationToUpdate.getDaysToStay(),
-													reservationToUpdate.getPricePerDay(),reservationToUpdate.getTotalPrice(),
-													reservationToUpdate.getPaidOrUnpaid(),
-													reservationToUpdate.getClientNameAndSurname(), reservationToUpdate.getClientCellPhone(), 
-													reservationToUpdate.getClientAddress());
-											c++;
+											
 											dao.updateReservation(oldReservation.getReservationNo(), oldReservation.getRoomNo(), 
 													StartDate, EndDate, daysToStay,pricePerDay,totalPrice,paidOrUnpaid, clientNameAndSurname, clientPhoneNumber, clientAddress);
 											c++;
@@ -465,17 +460,7 @@ public class ReservationUpdatingWindow extends Application {
 									{
 										
 									}
-									try {
-										dao.insertIntoReservationTableWithReservationNo(reservationToUpdate.getReservationNo(),reservationToUpdate.getRoomNo(), 
-												reservationToUpdate.getReservationStartDate(), 
-												reservationToUpdate.getReservationEndDate(), reservationToUpdate.getDaysToStay(), 
-												reservationToUpdate.getPricePerDay(),reservationToUpdate.getTotalPrice(),reservationToUpdate.getPaidOrUnpaid(),
-												reservationToUpdate.getClientNameAndSurname(), reservationToUpdate.getClientCellPhone(), 
-												reservationToUpdate.getClientAddress());
-									} catch (SQLException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
+									
 								}
 								else 
 								{
@@ -513,7 +498,7 @@ public class ReservationUpdatingWindow extends Application {
 									e.printStackTrace();
 								}
 								}
-							}
+							
 							
 						}
 					}

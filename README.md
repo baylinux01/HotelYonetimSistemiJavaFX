@@ -15,4 +15,4 @@ Programın dili İngilizce'dir.
 Windows işletim sistemli bilgisayarlar için ikinci bir seçenek olarak exe uzantılı installer da eklenmiştir.
 installer'a tıklayıp next'leyerek program windows bilgisayara yüklenebilir. 
 Eğer bilgisayarınızda java(jre) ve sqlite'ın ikisi birden yüklü değil ise program düzgün çalışmayacaktır.
-Ayrıca uygulama birden çok bilgisayarın aynı database'e bağlanıp kullanması için tasarlanmamıştır. Yani uygulama birden çok bilgisayarın aynı database'e bağlanıp beraber kullanması için uygun değildir.
+

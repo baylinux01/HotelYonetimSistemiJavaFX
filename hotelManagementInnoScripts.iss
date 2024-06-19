@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Hotel Management"
-#define MyAppVersion "6"
+#define MyAppVersion "7"
 #define MyAppPublisher "baylinux01"
 #define MyAppURL "https://github.com/baylinux01"
 #define MyAppExeName "hotelManagementSystemJavaFXMaven-0.0.1-SNAPSHOT.jar"
@@ -13,7 +13,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{0B45A722-2B71-4DC1-B3FC-D8BD48A5681D}
+AppId={{664C15F8-1324-4F31-8E09-4DFF40DBFB7B}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
