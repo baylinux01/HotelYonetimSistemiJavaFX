@@ -260,7 +260,7 @@ public class ReservationUpdatingWindow extends Application {
 			label4b.setLayoutY(330);
 			pane.getChildren().add(label4b);
 			
-			listView.setPrefSize(200,50);
+			listView.setPrefSize(200,60);
 			listView.setLayoutX(0);
 			listView.setLayoutY(350);
 			pane.getChildren().add(listView);
