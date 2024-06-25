@@ -9,7 +9,7 @@ Ancak programı çalıştırırken jar dosyasını masaüstünde çevresi çepe�
 diğer objelerle çakışabiliyor ve dolayısıyla database'i oluşturamayabiliyor.
 Bu durumda yapılan işlemlere otomatikmen olumsuz cevap verebiliyor. 
 Bu durumdan sakınmak için jar dosyasını mutlaka masaüstünde çevresi bomboş bir yere koyun o şekilde çalıştırın.
-Ayrıca uygulamaya MariaDB, Mysql veya PostgreSql ile giriş yaparsanız databasede girerken ismini programa belirttiğiniz(varsayılan olarak hotelmanagement) schema'yı önceden kendiniz oluşturmaya ve schema isminde büyük harf kullanmamaya, küçük harf kullanmaya ve Türkçe karakter kullanmamaya özen gösterin.
+Ayrıca uygulamaya MariaDB, Mysql veya PostgreSql ile giriş yaparsanız databasede girerken ismini programa belirttiğiniz(varsayılan olarak myschema) schema'yı önceden kendiniz oluşturmaya ve schema isminde büyük harf kullanmamaya, küçük harf kullanmaya ve Türkçe karakter kullanmamaya özen gösterin.
 Aksi takdirde program doğru çalışmayabilir.
 Programın dili İngilizce'dir.
 Windows işletim sistemli bilgisayarlar için ikinci bir seçenek olarak exe uzantılı installer da eklenmiştir.
