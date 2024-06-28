@@ -1,7 +1,7 @@
 # hotelManagementSystemJavaFX
 Uygulama girişinde sunulan 4 çeşit databaseden istediğiniz database ile giriş yapılıp kullanılabilen hotel rezervasyon takip uygulaması
 
-Repo indirildikten sonra program, bilgisayarınızda java(daha doğrusu jre) ve sqlite yüklü ise içerisindeki jar dosyasına tıklanarak çalıştırılabilir. 
+Repo indirildikten sonra program, bilgisayarınızda Amazon Corretto JDK 21 ve sqlite yüklü ise içerisindeki jar dosyasına tıklanarak çalıştırılabilir. 
 Program her ne kadar 4 çeşit farklı database kullanabiliyor olsa da diğer databaselerle ilgili temel bilgileri yine sqlite ile tutar.
 Jar dosyası çalıştırıldığında kendi database'ini kendisi oluşturur. 
 Ancak programı çalıştırırken jar dosyasını masaüstünde çevresi çepeçevre bomboş olan bir alana koymaya özen gösterin. 
@@ -14,5 +14,5 @@ Aksi takdirde program doğru çalışmayabilir.
 Programın dili İngilizce'dir.
 Windows işletim sistemli bilgisayarlar için ikinci bir seçenek olarak exe uzantılı installer da eklenmiştir.
 installer'a tıklayıp next'leyerek program windows bilgisayara yüklenebilir. 
-Eğer bilgisayarınızda java(jre) ve sqlite'ın ikisi birden yüklü değil ise program düzgün çalışmayacaktır.
+Ayrıca bilgisayarınızda Amazon Corretto JDK 21 ve sqlite'ın ikisi birden yüklü değil ise program düzgün çalışmayacaktır. Ben sadece Amazon Corretto JDK 21 ile denedim diğer JDK veya versiyonlar ile muhtemelen yine çalışır ama belki şekillerde kaymalar olabilir.
 
