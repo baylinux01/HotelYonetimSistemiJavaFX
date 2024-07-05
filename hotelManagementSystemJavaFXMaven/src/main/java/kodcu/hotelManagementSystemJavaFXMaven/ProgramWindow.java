@@ -181,9 +181,9 @@ public class ProgramWindow extends Application {
 						tableView.getColumns().clear();
 						textFieldA.setText("");
 						textFieldB.setText("");
-						TableColumn<ReservationToShow, Long> col1=new TableColumn<ReservationToShow, Long>("Reservasyon No");
-						TableColumn<ReservationToShow, String> col2=new TableColumn<ReservationToShow, String>("Reservasyon Başlangıç");
-						TableColumn<ReservationToShow, String> col3=new TableColumn<ReservationToShow, String>("Reservasyon Bitiş");
+						TableColumn<ReservationToShow, Long> col1=new TableColumn<ReservationToShow, Long>("Rezervasyon No");
+						TableColumn<ReservationToShow, String> col2=new TableColumn<ReservationToShow, String>("Rezervasyon Başlangıç");
+						TableColumn<ReservationToShow, String> col3=new TableColumn<ReservationToShow, String>("Rezervasyon Bitiş");
 						TableColumn<ReservationToShow, Long> col4=new TableColumn<ReservationToShow, Long>("Oda No");
 						TableColumn<ReservationToShow, Long> col5=new TableColumn<ReservationToShow, Long>("Kalınacak Gün");
 						TableColumn<ReservationToShow, Long> col6=new TableColumn<ReservationToShow, Long>("Günlük Ücret");
@@ -685,9 +685,9 @@ public class ProgramWindow extends Application {
 			}
 			if(language!=null && language.equals("Türkçe"))
 			{
-			TableColumn<ReservationToShow, Long> col1=new TableColumn<ReservationToShow, Long>("Reservasyon No");
-			TableColumn<ReservationToShow, String> col2=new TableColumn<ReservationToShow, String>("Reservasyon Başlangıç");
-			TableColumn<ReservationToShow, String> col3=new TableColumn<ReservationToShow, String>("Reservasyon Bitiş");
+			TableColumn<ReservationToShow, Long> col1=new TableColumn<ReservationToShow, Long>("Rezervasyon No");
+			TableColumn<ReservationToShow, String> col2=new TableColumn<ReservationToShow, String>("Rezervasyon Başlangıç");
+			TableColumn<ReservationToShow, String> col3=new TableColumn<ReservationToShow, String>("Rezervasyon Bitiş");
 			TableColumn<ReservationToShow, Long> col4=new TableColumn<ReservationToShow, Long>("Oda No");
 			TableColumn<ReservationToShow, Long> col5=new TableColumn<ReservationToShow, Long>("Kalınacak Gün");
 			TableColumn<ReservationToShow, Long> col6=new TableColumn<ReservationToShow, Long>("Günlük Ücret");
