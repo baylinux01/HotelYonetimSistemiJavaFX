@@ -26,6 +26,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -52,6 +53,11 @@ public class AvailableRoomsWindow extends Application {
 	static String clientPhoneNumber="";
 	static String clientAddress="";
 	static ListView<Long> listView=new ListView();
+	protected static String language;
+	protected static ComboBox<String> cblanguage;
+	protected static Label labelA,labelB;
+	protected static TextField textFieldA,textFieldB;
+	protected static Button button, button1,goBackToProgramWindowButton,saveReservationButton;
 	@Override
 	public void start(Stage primaryStage) throws InterruptedException {
 		try {
@@ -73,6 +79,41 @@ public class AvailableRoomsWindow extends Application {
 			pane.setLayoutX(90);
 			pane.setLayoutY(20);
 			root.getChildren().add(pane);
+			
+			EventHandler<ActionEvent> changeLanguageEventHandler=new EventHandler<ActionEvent>() 
+			{
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					language=cblanguage.getValue();
+					if(language.equals("English"))
+					{
+						saveReservationButton.setText("Save Reservation");
+						goBackToProgramWindowButton.setText("Go Back");
+						primaryStage.setTitle("Available Rooms");
+						
+					}
+					if(language.equals("Türkçe"))
+					{
+						saveReservationButton.setText("Rezervasyonu Kaydet");
+						goBackToProgramWindowButton.setText("Geri Dön");
+						primaryStage.setTitle("Müsait Odalar");
+					}
+					
+					
+				}
+			};
+			cblanguage=new ComboBox<String>();
+			cblanguage.setPrefSize(100, 20);
+			cblanguage.setLayoutX(210);
+			cblanguage.setLayoutY(0);
+			cblanguage.getItems().addAll("English","Türkçe");
+			if(language.equals("English"))
+			cblanguage.getSelectionModel().select(0);
+			if(language.equals("Türkçe"))
+			cblanguage.getSelectionModel().select(1);
+			cblanguage.setOnAction(changeLanguageEventHandler);
+			pane.getChildren().add(cblanguage);
 			
 			
 			listView.setPrefSize(200,320);
@@ -126,16 +167,35 @@ public class AvailableRoomsWindow extends Application {
 					}
 					if(result>0)
 					{
-						Alert alert=new Alert(AlertType.INFORMATION);
-						alert.setTitle("Success");
-						alert.setHeaderText("Reservation have been succesffully formed");
-						alert.setContentText("You can see reservations by choosing room number "
-								+ "from Main Page");
-						ButtonType bt=alert.showAndWait().orElse(null);
-						if(bt.equals(ButtonType.OK))
+						if(language.equals("English"))
 						{
+							Alert alert=new Alert(AlertType.INFORMATION);
+							alert.setTitle("Success");
+							alert.setHeaderText("Reservation have been succesffully formed");
+							alert.setContentText("You can see reservations by choosing room number "
+									+ "from Main Page");
+							ButtonType bt=alert.showAndWait().orElse(null);
+							if(bt.equals(ButtonType.OK))
+							{
+								
+							}
+							
 							
 						}
+						if(language.equals("Türkçe"))
+						{
+							Alert alert=new Alert(AlertType.INFORMATION);
+							alert.setTitle("İşlem Başarılı");
+							alert.setHeaderText("Rezervasyon Başarıyla oluşturuldu");
+							alert.setContentText("Reservasyonları ana sayfadan oda numarası "
+									+ "seçerek takip edebilirsiniz");
+							ButtonType bt=alert.showAndWait().orElse(null);
+							if(bt.equals(ButtonType.OK))
+							{
+								
+							}
+						}
+						
 						Group rootProgramWindow=new Group();
 						Scene sceneProgramWindow=new Scene(rootProgramWindow,1200,700);
 						Stage stageProgramWindow=new Stage();
@@ -148,6 +208,7 @@ public class AvailableRoomsWindow extends Application {
 						stageProgramWindow.setTitle("Main Page");
 						ProgramWindow programWindow=new ProgramWindow();
 						try {
+							programWindow.language=language;
 							programWindow.start(stageProgramWindow);
 //							comboBox.getItems().clear();
 //							textField.setText("");
@@ -169,7 +230,11 @@ public class AvailableRoomsWindow extends Application {
 				
 			};
 			
-			Button saveReservationButton=new Button("Save Reservation");
+			saveReservationButton=new Button("Save Reservation");
+			if(language!=null && language.equals("Türkçe"))
+				saveReservationButton.setText("Rezervasyonu Kaydet");
+			if(language!=null && language.equals("English"))
+				saveReservationButton.setText("Save Reservation");
 			saveReservationButton.setPrefSize(200, 20);
 			saveReservationButton.setLayoutX(0);
 			saveReservationButton.setLayoutY(340);
@@ -191,9 +256,10 @@ public class AvailableRoomsWindow extends Application {
 							.getResourceAsStream("hotelLogo.png")));
 					
 					//stageOpenAidatPayerAddingWindow.show();
-					stageProgramWindow.setTitle("Main Page");
+					
 					ProgramWindow programWindow=new ProgramWindow();
 					try {
+						programWindow.language=language;
 						programWindow.start(stageProgramWindow);
 //						comboBox.getItems().clear();
 //						textField.setText("");
@@ -213,7 +279,11 @@ public class AvailableRoomsWindow extends Application {
 				
 			};
 			
-			Button goBackToProgramWindowButton=new Button("Go Back");
+			goBackToProgramWindowButton=new Button("Go Back");
+			if(language!=null && language.equals("Türkçe"))
+				goBackToProgramWindowButton.setText("Geri Dön");
+			if(language!=null && language.equals("English"))
+				goBackToProgramWindowButton.setText("Go Back");
 			goBackToProgramWindowButton.setPrefSize(200, 20);
 			goBackToProgramWindowButton.setLayoutX(0);
 			goBackToProgramWindowButton.setLayoutY(380);

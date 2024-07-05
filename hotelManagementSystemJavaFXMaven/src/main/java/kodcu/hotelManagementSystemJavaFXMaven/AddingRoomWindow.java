@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -23,6 +24,11 @@ import javafx.stage.Stage;
 public class AddingRoomWindow extends Application {
 	static Dao dao=new Dao();
 	static TextField textField=new TextField();
+	protected static String language;
+	protected static ComboBox<String> cblanguage;
+	protected static Label label,labelB;
+	protected static TextField textFieldA,textFieldB;
+	protected static Button button, button1,goBackToProgramWindowButton,saveRoomButton;
 	@Override
 	public void start(Stage primaryStage) throws InterruptedException {
 		try {
@@ -40,7 +46,49 @@ public class AddingRoomWindow extends Application {
 			pane.setLayoutY(20);
 			root.getChildren().add(pane);
 			
-			Label label=new Label("Enter Room Number");
+			
+			EventHandler<ActionEvent> changeLanguageEventHandler=new EventHandler<ActionEvent>() 
+			{
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					language=cblanguage.getValue();
+					if(language.equals("English"))
+					{
+						label.setText("Enter Room Number");
+						saveRoomButton.setText("Save Room");
+						goBackToProgramWindowButton.setText("Go Back");
+						primaryStage.setTitle("Room Adding Page");
+						
+					}
+					if(language.equals("Türkçe"))
+					{
+						label.setText("Oda no giriniz");
+						saveRoomButton.setText("Odayı Kaydet");
+						goBackToProgramWindowButton.setText("Geri Dön");
+						primaryStage.setTitle("Oda Ekleme Sayfası");
+					}
+					
+					
+				}
+			};
+			cblanguage=new ComboBox<String>();
+			cblanguage.setPrefSize(100, 20);
+			cblanguage.setLayoutX(210);
+			cblanguage.setLayoutY(0);
+			cblanguage.getItems().addAll("English","Türkçe");
+			if(language.equals("English"))
+			cblanguage.getSelectionModel().select(0);
+			if(language.equals("Türkçe"))
+			cblanguage.getSelectionModel().select(1);
+			cblanguage.setOnAction(changeLanguageEventHandler);
+			pane.getChildren().add(cblanguage);
+			
+			label=new Label("Enter Room Number");
+			if(language!=null && language.equals("Türkçe"))
+				label.setText("Oda no giriniz");
+			if(language!=null && language.equals("English"))
+				label.setText("Enter Room Number");
 			label.setPrefSize(200, 20);
 			label.setLayoutX(0);
 			label.setLayoutY(50);
@@ -70,46 +118,102 @@ public class AddingRoomWindow extends Application {
 						}
 						if(result>0)
 						{
-							Alert alert=new Alert(AlertType.INFORMATION);
-							alert.setTitle("Success");
-							alert.setHeaderText("Success");
-							alert.setContentText("Successfully Completed");
-							ButtonType bt=alert.showAndWait().orElse(null);
-							if(bt.equals(ButtonType.OK))
+							if(language.equals("English"))
 							{
+								Alert alert=new Alert(AlertType.INFORMATION);
+								alert.setTitle("Success");
+								alert.setHeaderText("Success");
+								alert.setContentText("Successfully Completed");
+								ButtonType bt=alert.showAndWait().orElse(null);
+								if(bt.equals(ButtonType.OK))
+								{
+									
+								}
+								return;
 								
 							}
-							return;
+							if(language.equals("Türkçe"))
+							{
+								Alert alert=new Alert(AlertType.INFORMATION);
+								alert.setTitle("İşlem Başarılı");
+								alert.setHeaderText("İşlem Başarılı");
+								alert.setContentText("İşlem başarıyla tamamlandı");
+								ButtonType bt=alert.showAndWait().orElse(null);
+								if(bt.equals(ButtonType.OK))
+								{
+									
+								}
+								return;
+							}
+							
 						}
 						else
 						{
-							Alert alert=new Alert(AlertType.INFORMATION);
-							alert.setTitle("Caution");
-							alert.setHeaderText("Caution");
-							alert.setContentText("Operation is unsuccessful. "
-									+ "Please make sure the data you send to be unique and valid");
-							ButtonType bt=alert.showAndWait().orElse(null);
-							if(bt.equals(ButtonType.OK))
+							if(language.equals("English"))
 							{
 								
+								Alert alert=new Alert(AlertType.INFORMATION);
+								alert.setTitle("Caution");
+								alert.setHeaderText("Caution");
+								alert.setContentText("Operation is unsuccessful. "
+										+ "Please make sure the data you send to be unique and valid");
+								ButtonType bt=alert.showAndWait().orElse(null);
+								if(bt.equals(ButtonType.OK))
+								{
+									
+								}
+								return;
 							}
-							return;
+							if(language.equals("Türkçe"))
+							{
+								Alert alert=new Alert(AlertType.INFORMATION);
+								alert.setTitle("Dikkat");
+								alert.setHeaderText("Dikkat");
+								alert.setContentText("Operasyon başarısız. "
+										+ "Lütfen girdiğiniz sayının eşsiz ve geçerli olduğundan emin olun");
+								ButtonType bt=alert.showAndWait().orElse(null);
+								if(bt.equals(ButtonType.OK))
+								{
+									
+								}
+								return;
+							}
+							
 						}
 					}
 					else
 					{
-						Alert alert=new Alert(AlertType.INFORMATION);
-						alert.setTitle("Uyarı");
-						alert.setHeaderText("Dikkat");
-						alert.setContentText("İşlem Başarısız. Girdiğiniz oda numarasının benzersiz olmasına "
-								+ "sıfır ile başlamayacak şekilde 1 veya daha "
-								+ "büyük olmasına dikkat edip tekrar deneyin");
-						ButtonType bt=alert.showAndWait().orElse(null);
-						if(bt.equals(ButtonType.OK))
+						if(language.equals("English"))
 						{
 							
+							Alert alert=new Alert(AlertType.INFORMATION);
+							alert.setTitle("Uyarı");
+							alert.setHeaderText("Dikkat");
+							alert.setContentText("Unsuccessful. Please make sure that the number is unique and "
+									+ "is a number starting without zero ");
+							ButtonType bt=alert.showAndWait().orElse(null);
+							if(bt.equals(ButtonType.OK))
+							{
+								
+							}
+							return;
 						}
-						return;
+						if(language.equals("Türkçe"))
+						{
+							Alert alert=new Alert(AlertType.INFORMATION);
+							alert.setTitle("Uyarı");
+							alert.setHeaderText("Dikkat");
+							alert.setContentText("İşlem Başarısız. Girdiğiniz oda numarasının benzersiz olmasına "
+									+ "sıfır ile başlamayacak şekilde 1 veya daha "
+									+ "büyük olmasına dikkat edip tekrar deneyin");
+							ButtonType bt=alert.showAndWait().orElse(null);
+							if(bt.equals(ButtonType.OK))
+							{
+								
+							}
+							return;
+						}
+						
 					}
 					
 					
@@ -117,7 +221,11 @@ public class AddingRoomWindow extends Application {
 				
 			};
 			
-			Button saveRoomButton=new Button("Save Room");
+			saveRoomButton=new Button("Save Room");
+			if(language!=null && language.equals("Türkçe"))
+				saveRoomButton.setText("Odayı Kaydet");
+			if(language!=null && language.equals("English"))
+				saveRoomButton.setText("Save Room");
 			saveRoomButton.setPrefSize(200, 20);
 			saveRoomButton.setLayoutX(0);
 			saveRoomButton.setLayoutY(110);
@@ -139,9 +247,10 @@ public class AddingRoomWindow extends Application {
 							.getResourceAsStream("hotelLogo.png")));
 					
 					//stageOpenAidatPayerAddingWindow.show();
-					stageProgramWindow.setTitle("Main Page");
+					
 					ProgramWindow programWindow=new ProgramWindow();
 					try {
+						programWindow.language=language;
 						programWindow.start(stageProgramWindow);
 //						comboBox.getItems().clear();
 //						textField.setText("");
@@ -160,7 +269,11 @@ public class AddingRoomWindow extends Application {
 				
 			};
 			
-			Button goBackToProgramWindowButton=new Button("Go Back");
+			goBackToProgramWindowButton=new Button("Go Back");
+			if(language!=null && language.equals("Türkçe"))
+				goBackToProgramWindowButton.setText("Geri Dön");
+			if(language!=null && language.equals("English"))
+				goBackToProgramWindowButton.setText("Go Back");
 			goBackToProgramWindowButton.setPrefSize(200, 20);
 			goBackToProgramWindowButton.setLayoutX(0);
 			goBackToProgramWindowButton.setLayoutY(150);

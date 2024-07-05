@@ -30,6 +30,10 @@ public class LastDBWindow extends Application {
 	static TextField textField4=new TextField();
 	static TextField textField5=new TextField();
 	static PasswordField passwordField=new PasswordField();
+	protected static String language;
+	protected static ComboBox<String> cblanguage;
+	protected static Label label0,label,label2,label3,label4,label5;
+	protected static Button button,button2;
 	@Override
 	public void start(Stage primaryStage) throws InterruptedException {
 		try {
@@ -43,6 +47,76 @@ public class LastDBWindow extends Application {
 			
 			Dao dao=new Dao();
 			pdbi=dao.getPrefDBInformation();
+			//language=Main.language;
+			EventHandler<ActionEvent> changeLanguageEventHandler=new EventHandler<ActionEvent>() 
+			{
+
+				@Override
+				public void handle(ActionEvent event) {
+					// TODO Auto-generated method stub
+					language=cblanguage.getValue();
+					if(language.equals("English"))
+					{
+						label0.setText("Last Database Configurations");
+						label3.setText("Schema");
+						label3.setPrefSize(300, 20);
+						label3.setLayoutX(20);
+						label3.setLayoutY(159);
+						label3.setStyle("-fx-font-size:20px;");
+						label4.setText("Username");
+						label4.setPrefSize(300, 20);
+						label4.setLayoutX(0);
+						label4.setLayoutY(199);
+						label4.setStyle("-fx-font-size:20px;");
+						label5.setText("Password");
+						label5.setPrefSize(300, 20);
+						label5.setLayoutX(0);
+						label5.setLayoutY(239);
+						label5.setStyle("-fx-font-size:20px;");
+						button.setText("Continue");
+						button2.setText("Go Back");
+						
+					}
+					else if(language.equals("Türkçe"))
+					{
+						label0.setText("Son veritabanı ayarları");
+						label3.setText("Şema");
+						label3.setPrefSize(300, 20);
+						label3.setLayoutX(40);
+						label3.setLayoutY(159);
+						label3.setStyle("-fx-font-size:20px;");
+						label4.setText("Kullanıcı Adı");
+						label4.setPrefSize(300, 20);
+						label4.setLayoutX(0);
+						label4.setLayoutY(204);
+						label4.setStyle("-fx-font-size:16px;");
+						label5.setText("Şifre");
+						label5.setPrefSize(300, 20);
+						label5.setLayoutX(45);
+						label5.setLayoutY(239);
+						label5.setStyle("-fx-font-size:20px;");
+						button.setText("Devam edin");
+						button2.setText("Geri Dön");
+						
+					}
+					
+					
+					
+					
+				}
+				
+			};
+			cblanguage=new ComboBox<String>();
+			cblanguage.setPrefSize(200, 20);
+			cblanguage.setLayoutX(700);
+			cblanguage.setLayoutY(30);
+			cblanguage.getItems().addAll("English","Türkçe");
+			if(language.equals("English"))
+			cblanguage.getSelectionModel().select(0);
+			if(language.equals("Türkçe"))
+				cblanguage.getSelectionModel().select(1);
+			cblanguage.setOnAction(changeLanguageEventHandler);
+			root.getChildren().add(cblanguage);
 			
 			Pane pane=new Pane();
 			pane.setPrefSize(700, 700);
@@ -50,7 +124,11 @@ public class LastDBWindow extends Application {
 			pane.setLayoutY(200);
 			root.getChildren().add(pane);
 			
-			Label label0=new Label("Last Database Configurations");
+			label0=new Label("Last Database Configurations");
+			if(language.equals("English"))
+				label0.setText("Last Database Configurations");
+			if(language.equals("Türkçe"))
+				label0.setText("Son veritabanı ayarları");
 			label0.setPrefSize(300, 20);
 			label0.setLayoutX(100);
 			label0.setLayoutY(0);
@@ -84,7 +162,7 @@ public class LastDBWindow extends Application {
 			};
 			
 			
-			comboBox.setPrefSize(250, 20);
+			comboBox.setPrefSize(280, 20);
 			//comboBox.setEditable(false);
 			//comboBox.setDisable(true);
 			comboBox.setLayoutX(100);
@@ -95,7 +173,7 @@ public class LastDBWindow extends Application {
 			pane.getChildren().add(comboBox);
 			comboBox.setOnAction(comboBoxChangeEventHandler);
 			
-			Label label=new Label("Host");
+			label=new Label("Host");
 			label.setPrefSize(300, 20);
 			label.setLayoutX(50);
 			label.setLayoutY(79);
@@ -103,63 +181,102 @@ public class LastDBWindow extends Application {
 			pane.getChildren().add(label);
 			
 			
-			textField.setPrefSize(250, 20);
+			textField.setPrefSize(280, 20);
 			textField.setText(pdbi.getPrefHost());
 			textField.setEditable(false);
 			textField.setLayoutX(100);
 			textField.setLayoutY(80);
 			pane.getChildren().add(textField);
 			
-			Label label2=new Label("Port");
+			label2=new Label("Port");
 			label2.setPrefSize(300, 20);
 			label2.setLayoutX(50);
 			label2.setLayoutY(119);
 			label2.setStyle("-fx-font-size:20px;");
 			pane.getChildren().add(label2);
 			
-			textField2.setPrefSize(250, 20);
+			textField2.setPrefSize(280, 20);
 			textField2.setText(pdbi.getPrefPort());
 			textField2.setEditable(false);
 			textField2.setLayoutX(100);
 			textField2.setLayoutY(120);
 			pane.getChildren().add(textField2);
 			
-			Label label3=new Label("Schema");
-			label3.setPrefSize(300, 20);
-			label3.setLayoutX(20);
-			label3.setLayoutY(159);
-			label3.setStyle("-fx-font-size:20px;");
+			label3=new Label("Schema");
+			if(language.equals("English"))
+			{
+				label3.setText("Schema");
+				label3.setPrefSize(300, 20);
+				label3.setLayoutX(20);
+				label3.setLayoutY(159);
+				label3.setStyle("-fx-font-size:20px;");
+			}
+			if(language.equals("Türkçe"))
+			{
+				label3.setText("Şema");
+				label3.setPrefSize(300, 20);
+				label3.setLayoutX(40);
+				label3.setLayoutY(159);
+				label3.setStyle("-fx-font-size:20px;");
+			}
+			
 			pane.getChildren().add(label3);
 			
-			textField3.setPrefSize(250, 20);
+			textField3.setPrefSize(280, 20);
 			textField3.setText(pdbi.getPrefSchema());
 			textField3.setEditable(false);
 			textField3.setLayoutX(100);
 			textField3.setLayoutY(160);
 			pane.getChildren().add(textField3);
 			
-			Label label4=new Label("Username");
+			label4=new Label("Username");
+			if(language.equals("English"))
+			{
+			label4.setText("Username");
 			label4.setPrefSize(300, 20);
 			label4.setLayoutX(0);
 			label4.setLayoutY(199);
 			label4.setStyle("-fx-font-size:20px;");
+			}
+			if(language.equals("Türkçe"))
+			{
+			label4.setText("Kullanıcı Adı");
+			label4.setPrefSize(300, 20);
+			label4.setLayoutX(0);
+			label4.setLayoutY(204);
+			label4.setStyle("-fx-font-size:16px;");
+			}
+			
 			pane.getChildren().add(label4);
 			
-			textField4.setPrefSize(250, 20);
+			textField4.setPrefSize(280, 20);
 			textField4.setText(pdbi.getPrefUsername());
 			textField4.setEditable(false);
 			textField4.setLayoutX(100);
 			textField4.setLayoutY(200);
 			pane.getChildren().add(textField4);
 			
-			Label label5=new Label("Password");
-			label5.setPrefSize(300, 20);
-			label5.setLayoutX(0);
-			label5.setLayoutY(239);
-			label5.setStyle("-fx-font-size:20px;");
+			label5=new Label("Password");
+			if(language.equals("English"))
+			{
+				label5.setText("Password");
+				label5.setPrefSize(300, 20);
+				label5.setLayoutX(0);
+				label5.setLayoutY(239);
+				label5.setStyle("-fx-font-size:20px;");
+			}
+			if(language.equals("Türkçe"))
+			{
+				label5.setText("Şifre");
+				label5.setPrefSize(300, 20);
+				label5.setLayoutX(45);
+				label5.setLayoutY(239);
+				label5.setStyle("-fx-font-size:20px;");
+			}
+			
 			pane.getChildren().add(label5);
 			
-			passwordField.setPrefSize(250, 20);
+			passwordField.setPrefSize(280, 20);
 			passwordField.setText("");
 //			passwordField.setText(pdbi.getPrefPassword());
 //			passwordField.setEditable(false);
@@ -358,6 +475,7 @@ public class LastDBWindow extends Application {
 						stageProgramWindow.setTitle("Main Page");
 						ProgramWindow programWindow=new ProgramWindow();
 						try {
+							programWindow.language=language;
 							programWindow.start(stageProgramWindow);
 //							comboBox.getItems().clear();
 //							textField.setText("");
@@ -423,8 +541,12 @@ public class LastDBWindow extends Application {
 				
 			};
 			
-			Button button=new Button("Continue");
-			button.setPrefSize(250, 20);
+			button=new Button("Continue");
+			if(language.equals("English"))
+				button.setText("Continue");
+			if(language.equals("Türkçe"))
+				button.setText("Devam Edin");
+			button.setPrefSize(280, 20);
 			button.setLayoutX(100);
 			button.setLayoutY(280);
 			pane.getChildren().add(button);
@@ -454,7 +576,9 @@ public class LastDBWindow extends Application {
 					//stageOpenAidatPayerAddingWindow.show();
 					Main main=new Main();
 					try {
+						main.language=language;
 						main.start(stage);
+						
 						primaryStage.hide();
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -466,8 +590,12 @@ public class LastDBWindow extends Application {
 				
 			};
 			
-			Button button2=new Button("Go Back");
-			button2.setPrefSize(250, 20);
+			button2=new Button("Go Back");
+			if(language.equals("English"))
+				button2.setText("Go Back");
+			if(language.equals("Türkçe"))
+				button2.setText("Geri Dön");
+			button2.setPrefSize(280, 20);
 			button2.setLayoutX(100);
 			button2.setLayoutY(320);
 			pane.getChildren().add(button2);

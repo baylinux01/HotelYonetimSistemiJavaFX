@@ -52,6 +52,11 @@ public class AddingReservationWindow extends Application {
 	static String clientAddress="";
 	static String clientNameAndSurname="";
 	static String clientPhoneNumber="";
+	protected static String language;
+	protected static ComboBox<String> cblanguage,comboBox2;
+	protected static Label label00,label0,label,label2,label3,label4,label4a,label4b,label5,label6,label7;
+	protected static TextField textFieldA,textFieldB;
+	protected static Button checkReservationButton, goBackToProgramWindowButton;
 	
 	
 	public static long getPricePerDay() {
@@ -176,7 +181,81 @@ public class AddingReservationWindow extends Application {
 			pane.setLayoutY(0);
 			root.getChildren().add(pane);
 			
-			Label label=new Label("Choose reservation start day");
+			EventHandler<ActionEvent> changeLanguageEventHandler=new EventHandler<ActionEvent>() 
+			{
+				@Override
+				public void handle(ActionEvent event) 
+				{
+					language=cblanguage.getValue();
+					if(language.equals("English"))
+					{
+
+						label.setText("Choose reservation start day");
+						label2.setText("Choose reservation start month");
+						comboBox2.getItems().clear();
+						comboBox2.getItems().addAll("January","February","March",
+								"April","May","June","July","August","September",
+								"October","November","December");
+						
+						label3.setText("Type reservation start year e.g:2025");
+						label4.setText("Type how many days to stay e.g:13");
+						label4a.setText("Price Per Day");
+						label4b.setText("Paid Or Unpaid");
+						listView.getItems().clear();
+						listView.getItems().addAll("Unpaid","Paid");
+						
+						label5.setText("Client Name and Surname");
+						label6.setText("Client Phone Number");
+						label7.setText("Client Address");
+						checkReservationButton.setText("Check Room");
+						goBackToProgramWindowButton.setText("Go Back");
+						primaryStage.setTitle("Reservation Query Page");
+						
+						
+					}
+					if(language.equals("Türkçe"))
+					{
+
+						label.setText("Reservasyon başlangıç günü");
+						label2.setText("Reservasyon başlangıç ayı");
+						comboBox2.getItems().clear();
+						comboBox2.getItems().addAll("Ocak","Şubat","Mart",
+								"Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül",
+								"Ekim","Kasım","Aralık");
+						
+						label3.setText("Reservasyon başlangıç yılı ör:2025");
+						label4.setText("Kalınacak gün sayısı ör:13");
+						label4a.setText("Günlük Ücret");
+						label4b.setText("Ödenme Durumu");
+						listView.getItems().clear();
+						listView.getItems().addAll("Ödenmedi","Ödendi");
+						
+						label5.setText("Müşteri Adı Soyadı");
+						label6.setText("Müşteri Telefon No");
+						label7.setText("Müşteri Adres");
+						checkReservationButton.setText("Oda Bak");
+						goBackToProgramWindowButton.setText("Geri Dön");
+						primaryStage.setTitle("Reservasyon Sorgulama Sayfası");
+					}
+				}
+			};
+			cblanguage=new ComboBox<String>();
+			cblanguage.setPrefSize(100, 20);
+			cblanguage.setLayoutX(210);
+			cblanguage.setLayoutY(0);
+			cblanguage.getItems().addAll("English","Türkçe");
+			if(language.equals("English"))
+			cblanguage.getSelectionModel().select(0);
+			if(language.equals("Türkçe"))
+			cblanguage.getSelectionModel().select(1);
+			cblanguage.setOnAction(changeLanguageEventHandler);
+			pane.getChildren().add(cblanguage);
+			
+			label=new Label("Choose reservation start day");
+			if(language!=null && language.equals("Türkçe"))
+				label.setText("Reservasyon başlangıç günü");
+			if(language!=null && language.equals("English"))
+				label.setText("Choose reservation start day");
 			label.setPrefSize(200, 20);
 			label.setLayoutX(0);
 			label.setLayoutY(10);
@@ -191,21 +270,45 @@ public class AddingReservationWindow extends Application {
 					"27","28","29","30","31");
 			pane.getChildren().add(comboBox);
 			
-			Label label2=new Label("Choose reservation start month");
+			label2=new Label("Choose reservation start month");
+			if(language!=null && language.equals("Türkçe"))
+				label2.setText("Reservasyon başlangıç ayı");
+			if(language!=null && language.equals("English"))
+				label2.setText("Choose reservation start month");
 			label2.setPrefSize(200, 20);
 			label2.setLayoutX(0);
 			label2.setLayoutY(70);
 			pane.getChildren().add(label2);
 			
-			ComboBox comboBox2=new ComboBox();
+			comboBox2=new ComboBox();
 			comboBox2.setPrefSize(200, 20);
 			comboBox2.setLayoutX(0);
 			comboBox2.setLayoutY(90);
-			comboBox2.getItems().addAll("January","February","March","April","May","June","July","August","September",
-					"October","November","December");
+			if(language!=null && language.equals("Türkçe"))
+			{
+				comboBox2.getItems().clear();
+				comboBox2.getItems().addAll("Ocak","Şubat","Mart",
+						"Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül",
+						"Ekim","Kasım","Aralık");
+				
+				
+			}
+			if(language!=null && language.equals("English"))
+			{
+				comboBox2.getItems().clear();
+				comboBox2.getItems().addAll("January","February","March",
+						"April","May","June","July","August","September",
+						"October","November","December");
+
+
+			}
 			pane.getChildren().add(comboBox2);
 			
-			Label label3=new Label("Type reservation start year e.g:2025");
+			label3=new Label("Type reservation start year e.g:2025");
+			if(language!=null && language.equals("Türkçe"))
+				label3.setText("Reservasyon başlangıç yılı ör:2025");
+			if(language!=null && language.equals("English"))
+				label3.setText("Type reservation start year e.g:2025");
 			label3.setPrefSize(240, 20);
 			label3.setLayoutX(0);
 			label3.setLayoutY(130);
@@ -216,8 +319,12 @@ public class AddingReservationWindow extends Application {
 			textField.setLayoutY(150);
 			pane.getChildren().add(textField);
 			
-			Label label4=new Label("Type how many days to stay");
-			label4.setPrefSize(200, 20);
+			label4=new Label("Type how many days to stay");
+			if(language!=null && language.equals("Türkçe"))
+				label4.setText("Kalınacak gün sayısı ör:13");
+			if(language!=null && language.equals("English"))
+				label4.setText("Type how many days to stay e.g:13");
+			label4.setPrefSize(250, 20);
 			label4.setLayoutX(0);
 			label4.setLayoutY(190);
 			pane.getChildren().add(label4);
@@ -227,7 +334,11 @@ public class AddingReservationWindow extends Application {
 			textField2.setLayoutY(210);
 			pane.getChildren().add(textField2);
 			
-			Label label4a=new Label("Price Per Day");
+			label4a=new Label("Price Per Day");
+			if(language!=null && language.equals("Türkçe"))
+				label4a.setText("Günlük Ücret");
+			if(language!=null && language.equals("English"))
+				label4a.setText("Price Per Day");
 			label4a.setPrefSize(200, 20);
 			label4a.setLayoutX(0);
 			label4a.setLayoutY(250);
@@ -238,7 +349,11 @@ public class AddingReservationWindow extends Application {
 			textField2a.setLayoutY(270);
 			pane.getChildren().add(textField2a);
 			
-			Label label4b=new Label("Select Paid or Unpaid");
+			label4b=new Label("Paid Or Unpaid");
+			if(language!=null && language.equals("Türkçe"))
+				label4b.setText("Ödenme Durumu");
+			if(language!=null && language.equals("English"))
+				label4b.setText("Paid Or Unpaid");
 			label4b.setPrefSize(200, 20);
 			label4b.setLayoutX(0);
 			label4b.setLayoutY(310);
@@ -248,11 +363,24 @@ public class AddingReservationWindow extends Application {
 			listView.setLayoutX(0);
 			listView.setLayoutY(330);
 			listView.getItems().clear();
-			listView.getItems().addAll("Unpaid","Paid");
+			if(language!=null && language.equals("Türkçe"))
+			{
+				listView.getItems().clear();
+				listView.getItems().addAll("Ödenmedi","Ödendi");
+			}
+			if(language!=null && language.equals("English"))
+			{
+				listView.getItems().clear();
+				listView.getItems().addAll("Unpaid","Paid");
+			}
 			listView.getSelectionModel().select(0);
 			pane.getChildren().add(listView);
 			
-			Label label5=new Label("Client Name and Surname");
+			label5=new Label("Client Name and Surname");
+			if(language!=null && language.equals("Türkçe"))
+				label5.setText("Müşteri Adı Soyadı");
+			if(language!=null && language.equals("English"))
+				label5.setText("Client Name and Surname");
 			label5.setPrefSize(200, 20);
 			label5.setLayoutX(0);
 			label5.setLayoutY(410);
@@ -263,7 +391,11 @@ public class AddingReservationWindow extends Application {
 			textField3.setLayoutY(430);
 			pane.getChildren().add(textField3);
 			
-			Label label6=new Label("Client Phone Number");
+			label6=new Label("Client Phone Number");
+			if(language!=null && language.equals("Türkçe"))
+				label6.setText("Müşteri Telefon No");
+			if(language!=null && language.equals("English"))
+				label6.setText("Client Phone Number");
 			label6.setPrefSize(200, 20);
 			label6.setLayoutX(0);
 			label6.setLayoutY(470);
@@ -274,7 +406,11 @@ public class AddingReservationWindow extends Application {
 			textField4.setLayoutY(490);
 			pane.getChildren().add(textField4);
 			
-			Label label7=new Label("Client Address");
+			label7=new Label("Client Address");
+			if(language!=null && language.equals("Türkçe"))
+				label7.setText("Müşteri Adres");
+			if(language!=null && language.equals("English"))
+				label7.setText("Client Address");
 			label7.setPrefSize(200, 20);
 			label7.setLayoutX(0);
 			label7.setLayoutY(530);
@@ -320,12 +456,29 @@ public class AddingReservationWindow extends Application {
 						if(comboBox2.getValue().toString().equals("October")) month=10;
 						if(comboBox2.getValue().toString().equals("November")) month=11;
 						if(comboBox2.getValue().toString().equals("December")) month=12;
+						if(comboBox2.getValue().toString().equals("Ocak")) month=1;
+						if(comboBox2.getValue().toString().equals("Şubat")) month=2;
+						if(comboBox2.getValue().toString().equals("Mart")) month=3;
+						if(comboBox2.getValue().toString().equals("Nisan")) month=4;
+						if(comboBox2.getValue().toString().equals("Mayıs")) month=5;
+						if(comboBox2.getValue().toString().equals("Haziran")) month=6;
+						if(comboBox2.getValue().toString().equals("Temmuz")) month=7;
+						if(comboBox2.getValue().toString().equals("Ağustos")) month=8;
+						if(comboBox2.getValue().toString().equals("Eylül")) month=9;
+						if(comboBox2.getValue().toString().equals("Ekim")) month=10;
+						if(comboBox2.getValue().toString().equals("Kasım")) month=11;
+						if(comboBox2.getValue().toString().equals("Aralık")) month=12;
 						year=Long.valueOf(textField.getText());
 						day=Long.valueOf(comboBox.getValue().toString());
 						daysToStay=Long.valueOf(textField2.getText());
 						pricePerDay=Long.valueOf(textField2a.getText());
 						totalPrice=pricePerDay*daysToStay;
-						paidOrUnpaid=listView.getSelectionModel().getSelectedItem().toString();
+						if(listView.getSelectionModel().getSelectedItem().toString().equals("Paid")
+								||listView.getSelectionModel().getSelectedItem().toString().equals("Ödendi"))
+						paidOrUnpaid="Paid";
+						if(listView.getSelectionModel().getSelectedItem().toString().equals("Unpaid")
+								||listView.getSelectionModel().getSelectedItem().toString().equals("Ödenmedi"))
+						paidOrUnpaid="Unpaid";
 						clientNameAndSurname=textField3.getText();
 						clientPhoneNumber=textField4.getText();
 						clientAddress=textArea.getText();
@@ -419,11 +572,14 @@ public class AddingReservationWindow extends Application {
 								stageOpenAvailableRoomsWindow.getIcons().add(
 										new Image(AvailableRoomsWindow.class
 										.getResourceAsStream("hotelLogo.png")));
+								if(language.equals("English"))
 								stageOpenAvailableRoomsWindow.setTitle("Available Rooms");
+								if(language.equals("Türkçe"))
+									stageOpenAvailableRoomsWindow.setTitle("Müsait Odalar");
 								//stageOpenAidatPayerAddingWindow.show();
 								AvailableRoomsWindow openAvailableRoomsWindow=new AvailableRoomsWindow();
 								try {
-									
+									openAvailableRoomsWindow.language=language;
 									openAvailableRoomsWindow.start(stageOpenAvailableRoomsWindow);
 									primaryStage.hide();
 								} catch (Exception e) {
@@ -439,7 +595,9 @@ public class AddingReservationWindow extends Application {
 				
 			};
 			
-			Button checkReservationButton=new Button("Check Room");
+			checkReservationButton=new Button("Check Room");
+			if(language.equals("Türkçe"))
+				checkReservationButton.setText("Oda Bak");
 			checkReservationButton.setPrefSize(200, 20);
 			checkReservationButton.setLayoutX(0);
 			checkReservationButton.setLayoutY(640);
@@ -461,9 +619,10 @@ public class AddingReservationWindow extends Application {
 //							.getResourceAsStream("aidatTakipLogo.jpg")));
 					
 					//stageOpenAidatPayerAddingWindow.show();
-					stageProgramWindow.setTitle("Main Page");
+					
 					ProgramWindow programWindow=new ProgramWindow();
 					try {
+						programWindow.language=language;
 						programWindow.start(stageProgramWindow);
 //						comboBox.getItems().clear();
 //						textField.setText("");
@@ -482,7 +641,9 @@ public class AddingReservationWindow extends Application {
 				
 			};
 			
-			Button goBackToProgramWindowButton=new Button("Go Back");
+			goBackToProgramWindowButton=new Button("Go Back");
+			if(language.equals("Türkçe"))
+				goBackToProgramWindowButton.setText("Geri Dön");
 			goBackToProgramWindowButton.setPrefSize(200, 20);
 			goBackToProgramWindowButton.setLayoutX(0);
 			goBackToProgramWindowButton.setLayoutY(680);

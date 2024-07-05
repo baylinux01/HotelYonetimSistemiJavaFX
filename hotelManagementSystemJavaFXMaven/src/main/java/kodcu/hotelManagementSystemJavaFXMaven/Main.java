@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -15,7 +16,13 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+	protected static String language;
 	
+	
+
+	protected static ComboBox<String> cblanguage;
+	protected static Label label;
+	protected static Button button,button2,button3;
 	@Override
 	public void start(Stage primaryStage) throws InterruptedException {
 		try {
@@ -42,6 +49,50 @@ public class Main extends Application {
 			("MariaDB", "localhost","3306", "myschema","root", "");
 			dao.insertIntoDefaultDBInformationTable
 			("PostgreSql", "localhost","5432", "myschema","postgres", "");
+			EventHandler<ActionEvent> changeLanguageEventHandler=new EventHandler<ActionEvent>() 
+			{
+
+				@Override
+				public void handle(ActionEvent event) {
+					// TODO Auto-generated method stub
+					language=cblanguage.getValue();
+					if(language.equals("English"))
+					{
+						label.setText("Decide Which Database You Want To Use");
+						button.setText("Continue using the last configuration");
+						button2.setText("Continue using Sqlite As Schema Name = \"myschema\"");
+						button3.setText("Continue using Another DB and/or another Schema");
+					}
+					else if(language.equals("Türkçe"))
+					{
+						label.setText("Hangi veritabanını kullanmak istediğinize karar verin");
+						button.setText("Son ayarlar ile devam edin");
+						button2.setText("Şema adı = \"myschema\" olacak şekilde Sqlite kullanarak devam edin");
+						button3.setText("Başka bir veritabanı veya şema kullanarak devam edin");
+					}
+					
+					
+					
+					
+				}
+				
+			};
+			cblanguage=new ComboBox<String>();
+			cblanguage.setPrefSize(200, 20);
+			cblanguage.setLayoutX(700);
+			cblanguage.setLayoutY(30);
+			cblanguage.getItems().addAll("English","Türkçe");
+			if(language==null || language.length()==0) language="English";
+			if(language!=null && language.equals("Türkçe"))
+			{
+			cblanguage.getSelectionModel().select(1);
+			}
+			else
+			{
+			cblanguage.getSelectionModel().select(0);
+			}
+			cblanguage.setOnAction(changeLanguageEventHandler);
+			root.getChildren().add(cblanguage);
 			
 			Pane pane=new Pane();
 			pane.setPrefSize(700, 700);
@@ -49,8 +100,8 @@ public class Main extends Application {
 			pane.setLayoutY(200);
 			root.getChildren().add(pane);
 			
-			Label label=new Label("Decide Which Database You Want To Use");
-			label.setPrefSize(400, 20);
+			label=new Label("Decide Which Database You Want To Use");
+			label.setPrefSize(500, 20);
 			label.setLayoutX(0);
 			label.setLayoutY(0);
 			label.setStyle("-fx-font-size:20px;");
@@ -75,6 +126,7 @@ public class Main extends Application {
 					//stageOpenAidatPayerAddingWindow.show();
 					LastDBWindow openLastDBWindow=new LastDBWindow();
 					try {
+						openLastDBWindow.language=language;
 						openLastDBWindow.start(stageOpenLastDBWindow);
 						primaryStage.hide();
 					} catch (Exception e) {
@@ -86,8 +138,8 @@ public class Main extends Application {
 				
 			};
 			
-			Button button=new Button("Continue using the last configuration");
-			button.setPrefSize(400, 20);
+			button=new Button("Continue using the last configuration");
+			button.setPrefSize(500, 20);
 			button.setLayoutX(0);
 			button.setLayoutY(40);
 			button.setOnAction(continueUsingMyLastConfigurationEventHandler);
@@ -110,6 +162,7 @@ public class Main extends Application {
 					//stageOpenAidatPayerAddingWindow.show();
 					ProgramWindow programWindow=new ProgramWindow();
 					try {
+						programWindow.language=language;
 						programWindow.start(stageProgramWindow);
 //						comboBox.getItems().clear();
 //						textField.setText("");
@@ -127,8 +180,8 @@ public class Main extends Application {
 				
 			};
 			
-			Button button2=new Button("Continue using Sqlite As Schema Name = \"myschema\"");
-			button2.setPrefSize(400, 20);
+			button2=new Button("Continue using Sqlite As Schema Name = \"myschema\"");
+			button2.setPrefSize(500, 20);
 			button2.setLayoutX(0);
 			button2.setLayoutY(80);
 			button2.setOnAction(continueUsingSqliteEventHandler);
@@ -152,6 +205,7 @@ public class Main extends Application {
 					//stageOpenAidatPayerAddingWindow.show();
 					DBConfigurationWindow openDBConfigurationWindow=new DBConfigurationWindow();
 					try {
+						openDBConfigurationWindow.language=language;
 						openDBConfigurationWindow.start(stageOpenDBConfigurationWindow);
 						primaryStage.hide();
 					} catch (Exception e) {
@@ -163,13 +217,27 @@ public class Main extends Application {
 				
 			};
 			
-			Button button3=new Button("Continue using Another DB and/or another Schema");
-			button3.setPrefSize(400, 20);
+			button3=new Button("Continue using Another DB and/or another Schema");
+			button3.setPrefSize(500, 20);
 			button3.setLayoutX(0);
 			button3.setLayoutY(120);
 			button3.setOnAction(continueUsingAnotherDBEventHandler);
 			pane.getChildren().add(button3);
 			
+			if(language!=null && language.equals("English"))
+			{
+				label.setText("Decide Which Database You Want To Use");
+				button.setText("Continue using the last configuration");
+				button2.setText("Continue using Sqlite As Schema Name = \"myschema\"");
+				button3.setText("Continue using Another DB and/or another Schema");
+			}
+			else if(language!=null && language.equals("Türkçe"))
+			{
+				label.setText("Hangi veritabanını kullanmak istediğinize karar verin");
+				button.setText("Son ayarlar ile devam edin");
+				button2.setText("Şema adı = \"myschema\" olacak şekilde Sqlite kullanarak devam edin");
+				button3.setText("Başka bir veritabanı veya şema kullanarak devam edin");
+			}
 			
 		} catch(Exception e) {
 			e.printStackTrace();

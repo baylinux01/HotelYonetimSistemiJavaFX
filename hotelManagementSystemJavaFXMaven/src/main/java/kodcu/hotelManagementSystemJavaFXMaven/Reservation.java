@@ -82,8 +82,23 @@ public class Reservation {
 	public void setClientAddress(String clientAddress) {
 		this.clientAddress = clientAddress;
 	}
-	
-	
+	Reservation(){}
+	Reservation(ReservationToShow r){
+		this.setTotalPrice(r.getTotalPrice());
+		this.setRoomNo(r.getRoomNo());
+		this.setReservationStartDate(r.getReservationStartDate());
+		this.setReservationNo(r.getReservationNo());
+		this.setReservationEndDate(r.getReservationEndDate());
+		this.setPricePerDay(r.getPricePerDay());
+		this.setDaysToStay(r.getDaysToStay());
+		this.setClientNameAndSurname(r.getClientNameAndSurname());
+		this.setClientCellPhone(r.getClientCellPhone());
+		this.setClientAddress(r.getClientAddress());
+		if(r.getPaidOrUnpaid().equals("Paid")||r.getPaidOrUnpaid().equals("Ödendi"))
+			this.setPaidOrUnpaid("Paid");
+		if(r.getPaidOrUnpaid().equals("Unpaid")||r.getPaidOrUnpaid().equals("Ödenmedi"))
+			this.setPaidOrUnpaid("Unpaid");
+	}
 	
 	
 	
