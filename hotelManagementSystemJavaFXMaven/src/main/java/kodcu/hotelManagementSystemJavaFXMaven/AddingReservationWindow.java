@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
@@ -419,7 +420,7 @@ public class AddingReservationWindow extends Application {
 			textArea.setPrefSize(200,80);
 			textArea.setLayoutX(0);
 			textArea.setLayoutY(550);
-			textArea.setWrapText(true);
+			textArea.setWrapText(false);
 			pane.getChildren().add(textArea);
 			
 			EventHandler<ActionEvent> checkReservationEventHandler=new EventHandler<ActionEvent>() 
@@ -611,7 +612,7 @@ public class AddingReservationWindow extends Application {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1200,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 //					stageOpenDBChoosingWindow.getIcons().add(

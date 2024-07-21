@@ -495,7 +495,7 @@ public class ReservationUpdatingWindow extends Application {
 			textArea.setPrefSize(200,80);
 			textArea.setLayoutX(0);
 			textArea.setLayoutY(560);
-			textArea.setWrapText(true);
+			textArea.setWrapText(false);
 			pane.getChildren().add(textArea);
 			textArea.setText(oldReservation.getClientAddress());
 			
@@ -701,7 +701,7 @@ public class ReservationUpdatingWindow extends Application {
 								textField4.setText("");
 								textArea.setText("");
 								Group rootProgramWindow=new Group();
-								Scene sceneProgramWindow=new Scene(rootProgramWindow,1200,700);
+								Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
 								Stage stageProgramWindow=new Stage();
 								stageProgramWindow.setScene(sceneProgramWindow);
 								stageProgramWindow.getIcons().add(
@@ -751,7 +751,7 @@ public class ReservationUpdatingWindow extends Application {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1200,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 					stageProgramWindow.getIcons().add(

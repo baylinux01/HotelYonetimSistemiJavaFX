@@ -197,7 +197,7 @@ public class AvailableRoomsWindow extends Application {
 						}
 						
 						Group rootProgramWindow=new Group();
-						Scene sceneProgramWindow=new Scene(rootProgramWindow,1200,700);
+						Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
 						Stage stageProgramWindow=new Stage();
 						stageProgramWindow.setScene(sceneProgramWindow);
 //						stageOpenDBChoosingWindow.getIcons().add(
@@ -248,7 +248,7 @@ public class AvailableRoomsWindow extends Application {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1200,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 					stageProgramWindow.getIcons().add(

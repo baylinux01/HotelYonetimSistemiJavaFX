@@ -17,7 +17,5 @@ Bu durumdan sakınmak için jar dosyasını mutlaka masaüstünde çevresi bombo
 Ayrıca uygulamaya MariaDB, Mysql veya PostgreSql ile giriş yaparsanız databasede girerken ismini programa belirttiğiniz(varsayılan olarak myschema) schema'yı önceden kendiniz oluşturmaya ve schema isminde büyük harf kullanmamaya, küçük harf kullanmaya ve Türkçe karakter kullanmamaya özen gösterin.
 Aksi takdirde program doğru çalışmayabilir.
 Program İngilizce ve Türkçe olmak üzere 2 dili desteklemekte ve bu diller arasında anında geçiş yapma olanağı sağlamaktadır.
-Windows işletim sistemli bilgisayarlar için ikinci bir seçenek olarak exe uzantılı installer da eklenmiştir.
-installer'a tıklayıp next'leyerek program windows bilgisayara yüklenebilir. 
 Ayrıca bilgisayarınızda Amazon Corretto JDK 21 ve sqlite'ın ikisi birden yüklü değil ise program düzgün çalışmayacaktır. Ben sadece Amazon Corretto JDK 21 ile denedim diğer JDK veya versiyonlar ile muhtemelen yine çalışır ama belki şekillerde kaymalar olabilir.
 

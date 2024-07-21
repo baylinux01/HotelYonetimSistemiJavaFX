@@ -50,7 +50,7 @@ public class ProgramWindow extends Application {
 			
 			
 			Group root = new Group();
-			Scene scene = new Scene(root,1200,700);
+			Scene scene = new Scene(root,1300,700);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -131,7 +131,8 @@ public class ProgramWindow extends Application {
 						col8.setMinWidth(110);
 						col9.setMinWidth(140);
 						col10.setMinWidth(120);
-						col11.setMinWidth(110);
+						col11.setMinWidth(240);
+						//col11.setMaxWidth(200);
 						
 						
 						col1.setStyle("-fx-font:normal bold 10px 'serif' ");
@@ -216,7 +217,8 @@ public class ProgramWindow extends Application {
 						col8.setMinWidth(110);
 						col9.setMinWidth(140);
 						col10.setMinWidth(120);
-						col11.setMinWidth(110);
+						col11.setMinWidth(240);
+						//col11.setMaxWidth(200);
 						
 						
 						col1.setStyle("-fx-font:normal bold 10px 'serif' ");
@@ -257,7 +259,7 @@ public class ProgramWindow extends Application {
 			};
 			cblanguage=new ComboBox<String>();
 			cblanguage.setPrefSize(200, 20);
-			cblanguage.setLayoutX(960);
+			cblanguage.setLayoutX(1060);
 			cblanguage.setLayoutY(20);
 			cblanguage.getItems().addAll("English","Türkçe");
 			if(language.equals("English"))
@@ -614,7 +616,7 @@ public class ProgramWindow extends Application {
 			cb.setOnAction(fillTableViewEventHandler);
 			
 			tableView=new TableView<ReservationToShow>();
-			tableView.setPrefSize(1140, 520);
+			tableView.setPrefSize(1240, 520);
 			tableView.setLayoutX(20);
 			tableView.setLayoutY(60);
 			root.getChildren().add(tableView);
@@ -655,7 +657,9 @@ public class ProgramWindow extends Application {
 			col8.setMinWidth(110);
 			col9.setMinWidth(140);
 			col10.setMinWidth(120);
-			col11.setMinWidth(110);
+			col11.setMinWidth(240);
+			//col11.setMaxWidth(200);
+			
 			
 			
 			col1.setStyle("-fx-font:normal bold 10px 'serif' ");
@@ -720,7 +724,8 @@ public class ProgramWindow extends Application {
 			col8.setMinWidth(110);
 			col9.setMinWidth(140);
 			col10.setMinWidth(120);
-			col11.setMinWidth(110);
+			col11.setMinWidth(240);
+			//col11.setMaxWidth(200);
 			
 			
 			col1.setStyle("-fx-font:normal bold 10px 'serif' ");
