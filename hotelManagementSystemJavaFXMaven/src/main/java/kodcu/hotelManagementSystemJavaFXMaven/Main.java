@@ -38,17 +38,17 @@ public class Main extends Application {
 			primaryStage.show();
 			
 			Dao dao=new Dao();
-			dao.createDatabase("myschema");
+			dao.createDatabase("hotelmanagement");
 			dao.createDefaultDBInformationTable();
 			dao.clearDefaultDBInformationTable();
 			dao.insertIntoDefaultDBInformationTable
-			("Sqlite", "", "", "myschema", "", "");
+			("Sqlite", "", "", "hotelmanagement", "", "");
 			dao.insertIntoDefaultDBInformationTable
-			("MySql", "localhost","3306", "myschema","root", "");
+			("MySql", "localhost","3306", "hotelmanagement","root", "");
 			dao.insertIntoDefaultDBInformationTable
-			("MariaDB", "localhost","3306", "myschema","root", "");
+			("MariaDB", "localhost","3306", "hotelmanagement","root", "");
 			dao.insertIntoDefaultDBInformationTable
-			("PostgreSql", "localhost","5432", "myschema","postgres", "");
+			("PostgreSql", "localhost","5432", "hotelmanagement","postgres", "");
 			EventHandler<ActionEvent> changeLanguageEventHandler=new EventHandler<ActionEvent>() 
 			{
 
@@ -60,14 +60,14 @@ public class Main extends Application {
 					{
 						label.setText("Decide Which Database You Want To Use");
 						button.setText("Continue using the last configuration");
-						button2.setText("Continue using Sqlite As Schema Name = \"myschema\"");
+						button2.setText("Continue using Sqlite As Schema Name = \"hotelmanagement\"");
 						button3.setText("Continue using Another DB and/or another Schema");
 					}
 					else if(language.equals("Türkçe"))
 					{
 						label.setText("Hangi veritabanını kullanmak istediğinize karar verin");
 						button.setText("Son ayarlar ile devam edin");
-						button2.setText("Şema adı = \"myschema\" olacak şekilde Sqlite kullanarak devam edin");
+						button2.setText("Şema adı = \"hotelmanagement\" olacak şekilde Sqlite kullanarak devam edin");
 						button3.setText("Başka bir veritabanı veya şema kullanarak devam edin");
 					}
 					
@@ -180,7 +180,7 @@ public class Main extends Application {
 				
 			};
 			
-			button2=new Button("Continue using Sqlite As Schema Name = \"myschema\"");
+			button2=new Button("Continue using Sqlite As Schema Name = \"hotelmanagement\"");
 			button2.setPrefSize(500, 20);
 			button2.setLayoutX(0);
 			button2.setLayoutY(80);
@@ -228,14 +228,14 @@ public class Main extends Application {
 			{
 				label.setText("Decide Which Database You Want To Use");
 				button.setText("Continue using the last configuration");
-				button2.setText("Continue using Sqlite As Schema Name = \"myschema\"");
+				button2.setText("Continue using Sqlite As Schema Name = \"hotelmanagement\"");
 				button3.setText("Continue using Another DB and/or another Schema");
 			}
 			else if(language!=null && language.equals("Türkçe"))
 			{
 				label.setText("Hangi veritabanını kullanmak istediğinize karar verin");
 				button.setText("Son ayarlar ile devam edin");
-				button2.setText("Şema adı = \"myschema\" olacak şekilde Sqlite kullanarak devam edin");
+				button2.setText("Şema adı = \"hotelmanagement\" olacak şekilde Sqlite kullanarak devam edin");
 				button3.setText("Başka bir veritabanı veya şema kullanarak devam edin");
 			}
 			

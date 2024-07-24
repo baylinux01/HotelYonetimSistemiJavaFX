@@ -20,7 +20,7 @@ public class Dao {
 	private static String MariaDBPort="3306";
 	private static String PostgreSqlPort="5432";
 	private static String Port="";
-	private static String PrefSchema="myschema";
+	private static String PrefSchema="hotelmanagement";
 	
 	private static String MySqlClassName="com.mysql.cj.jdbc.Driver";
 	private static String MySqlEmptyUrl="jdbc:mysql://"+Host+":"+Port+"/";
@@ -355,56 +355,13 @@ public class Dao {
 		
 		String query1="Create table DefaultDBInformationTable" +
                 "(" +
-				"defaultDB nvarchar(45) primary key,"+
-                "defaultHost nvarchar(45),"+
-                 "defaultPort nvarchar(45),"+
-                 "defaultSchema nvarchar(45),"+
-                  "defaultUsername nvarchar(45),"+
-                  "defaultPassword nvarchar(45));";
-		if(className.equals(MySqlClassName))
-		{
-			query1="Create table DefaultDBInformationTable" +
-	                "(" +
-					"defaultDB nvarchar(45) primary key,"+
-	                "defaultHost nvarchar(45),"+
-	                 "defaultPort nvarchar(45),"+
-	                 "defaultSchema nvarchar(45),"+
-	                  "defaultUsername nvarchar(45),"+
-	                  "defaultPassword nvarchar(45));";
-		}
-		else if(className.equals(MariaDBClassName))
-		{
-			query1="Create table DefaultDBInformationTable" +
-	                "(" +
-					"defaultDB nvarchar(45) primary key,"+
-	                "defaultHost nvarchar(45),"+
-	                 "defaultPort nvarchar(45),"+
-	                 "defaultSchema nvarchar(45),"+
-	                  "defaultUsername nvarchar(45),"+
-	                  "defaultPassword nvarchar(45));";
-		}
-		else if(className.equals(SqliteDBClassName))
-		{
-			query1="Create table DefaultDBInformationTable" +
-	                "(" +
-					"defaultDB nvarchar(45) primary key,"+
-	                "defaultHost nvarchar(45),"+
-	                 "defaultPort nvarchar(45),"+
-	                 "defaultSchema nvarchar(45),"+
-	                  "defaultUsername nvarchar(45),"+
-	                  "defaultPassword nvarchar(45));";
-		}
-		else if(className.equals(PostgreClassName))
-		{
-			query1="Create table DefaultDBInformationTable" +
-	                "(" +
-					"defaultDB text primary key,"+
-	                "defaultHost text,"+
-	                 "defaultPort text,"+
-	                 "defaultSchema text,"+
-	                  "defaultUsername text,"+
-	                  "defaultPassword text);";
-		}
+				"defaultDB text primary key,"+
+                "defaultHost text,"+
+                 "defaultPort text,"+
+                 "defaultSchema text,"+
+                  "defaultUsername text,"+
+                  "defaultPassword text);";
+
 		
 		
 		
@@ -443,13 +400,13 @@ public class Dao {
 		
 		String query1="Create table PrefDBInformationTable" +
                 "(" +
-				"Id long primary key,"+
-				"PrefDB nvarchar(45),"+
-                "PrefHost nvarchar(45),"+
-                 "PrefPort nvarchar(45),"+
-                 "PrefSchema nvarchar(45),"
-                 + "PrefUsername nvarchar(45),"
-                 + "PrefPassword nvarchar(45));";
+				"Id int primary key,"+
+				"PrefDB text,"+
+                "PrefHost text,"+
+                 "PrefPort text,"+
+                 "PrefSchema text,"
+                 + "PrefUsername text,"
+                 + "PrefPassword text);";
 		
 		
 		
@@ -807,30 +764,7 @@ public class Dao {
                 "(" +
 				"RoomNo int primary key);";
 		
-		if(className.equals(MySqlClassName))
-		{
-			query1="Create table RoomTable" +
-	                "(" +
-					"RoomNo int primary key);";
-		}
-		else if(className.equals(MariaDBClassName))
-		{
-			query1="Create table RoomTable" +
-	                "(" +
-					"RoomNo int primary key);";
-		}
-		else if(className.equals(SqliteDBClassName))
-		{
-			query1="Create table RoomTable" +
-	                "(" +
-					"RoomNo int primary key);";
-		}
-		else if(className.equals(PostgreClassName))
-		{
-			query1="Create table RoomTable" +
-	                "(" +
-					"RoomNo int primary key);";
-		}
+		
 		
 		
 		
@@ -870,61 +804,61 @@ public class Dao {
 		{
 			query1="Create table ReservationTable" +
 					"(" +
-					"ReservationNo Int primary key auto_increment, "
-					+ "ReservationStartDate nvarchar(45), "
-					+ "ReservationEndDate nvarchar(45), "
+					"ReservationNo int primary key auto_increment, "
+					+ "ReservationStartDate text, "
+					+ "ReservationEndDate text, "
 					+"DaysToStay int not null, "
 					+ "RoomNo int not null,"
 					+ "PricePerDay int not null,"
 					+ "TotalPrice int not null,"
-					+ "PaidOrUnpaid nvarchar(45) not null, "
-					+ "ClientNameAndSurname nvarchar(45), "
-					+ "ClientPhoneNumber nvarchar(45), "
-					+"ClientAddress nvarchar(45));";
+					+ "PaidOrUnpaid text not null, "
+					+ "ClientNameAndSurname text, "
+					+ "ClientPhoneNumber text, "
+					+"ClientAddress text);";
 		}
 		else if(className.equals(MariaDBClassName))
 		{
 			query1="Create table ReservationTable" +
 					"(" +
-					"ReservationNo Int primary key auto_increment, "
-					+ "ReservationStartDate nvarchar(45), "
-					+ "ReservationEndDate nvarchar(45), "
+					"ReservationNo int primary key auto_increment, "
+					+ "ReservationStartDate text, "
+					+ "ReservationEndDate text, "
 					+"DaysToStay int not null, "
 					+ "RoomNo int not null,"
 					+ "PricePerDay int not null,"
 					+ "TotalPrice int not null,"
-					+ "PaidOrUnpaid nvarchar(45) not null, "
-					+ "ClientNameAndSurname nvarchar(45), "
-					+ "ClientPhoneNumber nvarchar(45), "
-					+"ClientAddress nvarchar(45));";
+					+ "PaidOrUnpaid text not null, "
+					+ "ClientNameAndSurname text, "
+					+ "ClientPhoneNumber text, "
+					+"ClientAddress text);";
 		}
 		else if(className.equals(SqliteDBClassName))
 		{
 			query1="Create table ReservationTable" +
 					"(" +
 					"ReservationNo integer primary key autoincrement, "
-					+ "ReservationStartDate nvarchar(45), "
-					+ "ReservationEndDate nvarchar(45), "
-					+"DaysToStay integer not null, "
-					+ "RoomNo integer not null,"
-					+ "PricePerDay integer not null,"
-					+ "TotalPrice integer not null,"
-					+ "PaidOrUnpaid nvarchar(45) not null, "
-					+ "ClientNameAndSurname nvarchar(45), "
-					+ "ClientPhoneNumber nvarchar(45), "
-					+"ClientAddress nvarchar(45));";
+					+ "ReservationStartDate text, "
+					+ "ReservationEndDate text, "
+					+"DaysToStay int not null, "
+					+ "RoomNo int not null,"
+					+ "PricePerDay int not null,"
+					+ "TotalPrice int not null,"
+					+ "PaidOrUnpaid text not null, "
+					+ "ClientNameAndSurname text, "
+					+ "ClientPhoneNumber text, "
+					+"ClientAddress text);";
 		}
 		else if(className.equals(PostgreClassName))
 		{
 			query1="Create table ReservationTable" +
 					"(" +
-					"ReservationNo integer primary key generated by default as identity, "
+					"ReservationNo int primary key generated by default as identity, "
 					+ "ReservationStartDate text, "
 					+ "ReservationEndDate text, "
-					+"DaysToStay integer not null, "
-					+ "RoomNo integer not null,"
-					+ "PricePerDay integer not null,"
-					+ "TotalPrice integer not null,"
+					+"DaysToStay int not null, "
+					+ "RoomNo int not null,"
+					+ "PricePerDay int not null,"
+					+ "TotalPrice int not null,"
 					+ "PaidOrUnpaid text, "
 					+ "ClientNameAndSurname text, "
 					+ "ClientPhoneNumber text, "
