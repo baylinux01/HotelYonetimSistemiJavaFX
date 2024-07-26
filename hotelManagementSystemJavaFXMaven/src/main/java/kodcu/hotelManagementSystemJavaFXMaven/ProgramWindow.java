@@ -61,13 +61,13 @@ public class ProgramWindow extends Application {
 			dao.clearDefaultDBInformationTable();
 			dao.createDefaultDBInformationTable();
 			dao.insertIntoDefaultDBInformationTable
-			("Sqlite", "", "", "myschema", "", "");
+			("Sqlite", "", "", "hotelmanagement", "", "");
 			dao.insertIntoDefaultDBInformationTable
-			("MySql", "localhost","3306", "myschema","root", "");
+			("MySql", "localhost","3306", "hotelmanagement","root", "");
 			dao.insertIntoDefaultDBInformationTable
-			("MariaDB", "localhost","3306", "myschema","root", "");
+			("MariaDB", "localhost","3306", "hotelmanagement","root", "");
 			dao.insertIntoDefaultDBInformationTable
-			("PostgreSql", "localhost","5432", "myschema","postgres", "");
+			("PostgreSql", "localhost","5432", "hotelmanagement","postgres", "");
 			
 			dao.CreateRoomTable();
 			dao.createReservationTable();
