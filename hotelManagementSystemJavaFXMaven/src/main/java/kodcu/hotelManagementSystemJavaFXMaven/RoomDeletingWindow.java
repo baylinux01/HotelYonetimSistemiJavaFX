@@ -6,7 +6,7 @@ import java.util.List;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -42,6 +42,43 @@ public class RoomDeletingWindow extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			EventHandler closeRequestEventHandler=new EventHandler()
+			{
+
+				@Override
+				public void handle(Event event) {
+					Group rootProgramWindow=new Group();
+					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+					Stage stageProgramWindow=new Stage();
+					stageProgramWindow.setScene(sceneProgramWindow);
+					stageProgramWindow.getIcons().add(
+							new Image(ProgramWindow.class
+							.getResourceAsStream("hotelLogo.png")));
+					
+					//stageOpenAidatPayerAddingWindow.show();
+					
+					ProgramWindow programWindow=new ProgramWindow();
+					try {
+						programWindow.language=language;
+						programWindow.start(stageProgramWindow);
+//						comboBox.getItems().clear();
+//						textField.setText("");
+//						textField2.setText("");
+//						textField3.setText("");
+//						textField4.setText("");
+//						passwordField.setText("");
+						
+						primaryStage.hide();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+				
+			};
+			primaryStage.setOnCloseRequest(closeRequestEventHandler);
 			
 			Pane pane=new Pane();
 			pane.setPrefSize(340, 340);
