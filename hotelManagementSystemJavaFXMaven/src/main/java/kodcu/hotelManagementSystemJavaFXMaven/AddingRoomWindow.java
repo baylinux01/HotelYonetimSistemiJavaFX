@@ -47,7 +47,7 @@ public class AddingRoomWindow extends Application {
 				public void handle(Event event) {
 					textField.setText("");
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 					stageProgramWindow.getIcons().add(
@@ -278,7 +278,7 @@ public class AddingRoomWindow extends Application {
 					// TODO Auto-generated method stub
 					textField.setText("");
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 					stageProgramWindow.getIcons().add(

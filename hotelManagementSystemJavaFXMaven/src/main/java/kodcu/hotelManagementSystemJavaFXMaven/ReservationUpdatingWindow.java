@@ -164,7 +164,7 @@ public class ReservationUpdatingWindow extends Application {
 				@Override
 				public void handle(Event event) {
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 					stageProgramWindow.getIcons().add(
@@ -788,7 +788,7 @@ public class ReservationUpdatingWindow extends Application {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 					stageProgramWindow.getIcons().add(

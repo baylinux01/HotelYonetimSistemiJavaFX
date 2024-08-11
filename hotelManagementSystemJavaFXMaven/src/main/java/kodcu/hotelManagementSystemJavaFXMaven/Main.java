@@ -116,7 +116,7 @@ public class Main extends Application {
 					// TODO Auto-generated method stub
 
 					Group rootOpenLastDBWindow=new Group();
-					Scene sceneOpenLastDBWindow=new Scene(rootOpenLastDBWindow,1200,700);
+					Scene sceneOpenLastDBWindow=new Scene(rootOpenLastDBWindow);
 					Stage stageOpenLastDBWindow=new Stage();
 					stageOpenLastDBWindow.setScene(sceneOpenLastDBWindow);
 					stageOpenLastDBWindow.getIcons().add(
@@ -152,7 +152,7 @@ public class Main extends Application {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 					stageProgramWindow.getIcons().add(
@@ -195,7 +195,7 @@ public class Main extends Application {
 					// TODO Auto-generated method stub
 					
 					Group rootOpenDBConfigurationWindow=new Group();
-					Scene sceneOpenDBConfigurationWindow=new Scene(rootOpenDBConfigurationWindow,1200,700);
+					Scene sceneOpenDBConfigurationWindow=new Scene(rootOpenDBConfigurationWindow);
 					Stage stageOpenDBConfigurationWindow=new Stage();
 					stageOpenDBConfigurationWindow.setScene(sceneOpenDBConfigurationWindow);
 					stageOpenDBConfigurationWindow.getIcons().add(

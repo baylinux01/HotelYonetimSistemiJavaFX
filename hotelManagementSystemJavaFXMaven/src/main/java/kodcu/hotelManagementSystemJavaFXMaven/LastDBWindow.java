@@ -358,7 +358,7 @@ public class LastDBWindow extends Application {
 						{
 							String Host="localhost";
 							String Port="";
-							String PrefSchema="myschema";
+							String PrefSchema="hotelmanagement";
 							Dao.setSqliteDBClassName("org.sqlite.JDBC");
 							Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
 							Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema+".sqlite");
@@ -367,7 +367,7 @@ public class LastDBWindow extends Application {
 							Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
 							Dao.setHost("localhost");
 							Dao.setPort("");
-							Dao.setPrefSchema("myschema");
+							Dao.setPrefSchema("hotelmanagement");
 							Dao.setUname("root");
 							Dao.setPass("myPass");
 							Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host+":"+Port+"/");
@@ -384,7 +384,7 @@ public class LastDBWindow extends Application {
 							}
 							try {
 								dao.insertIntoPrefDBInformationTable
-								("Sqlite", "", "", "myschema", "", "");
+								("Sqlite", "", "", "hotelmanagement", "", "");
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -464,7 +464,7 @@ public class LastDBWindow extends Application {
 								Dao.setPass(passwordField.getText());
 							}
 						Group rootProgramWindow=new Group();
-						Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+						Scene sceneProgramWindow=new Scene(rootProgramWindow);
 						Stage stageProgramWindow=new Stage();
 						stageProgramWindow.setScene(sceneProgramWindow);
 						stageProgramWindow.getIcons().add(
@@ -493,7 +493,7 @@ public class LastDBWindow extends Application {
 						{
 							String Host2="localhost";
 							String Port2="";
-							String PrefSchema2="myschema";
+							String PrefSchema2="hotelmanagement";
 							Dao.setSqliteDBClassName("org.sqlite.JDBC");
 							Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
 							Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema2+".sqlite");
@@ -502,7 +502,7 @@ public class LastDBWindow extends Application {
 							Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
 							Dao.setHost("localhost");
 							Dao.setPort("");
-							Dao.setPrefSchema("myschema");
+							Dao.setPrefSchema("hotelmanagement");
 							Dao.setUname("root");
 							Dao.setPass("myPass");
 							Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host2+":"+Port2+"/");
@@ -516,7 +516,7 @@ public class LastDBWindow extends Application {
 						// TODO Auto-generated catch block
 						String Host="localhost";
 						String Port="";
-						String PrefSchema="myschema";
+						String PrefSchema="hotelmanagement";
 						Dao.setSqliteDBClassName("org.sqlite.JDBC");
 						Dao.setSqliteDBEmptyUrl("jdbc:sqlite");
 						Dao.setSqliteDBUrl("jdbc:sqlite:"+PrefSchema+".sqlite");
@@ -525,7 +525,7 @@ public class LastDBWindow extends Application {
 						Dao.setEmptyUrl(Dao.getSqliteDBEmptyUrl());
 						Dao.setHost("localhost");
 						Dao.setPort("");
-						Dao.setPrefSchema("myschema");
+						Dao.setPrefSchema("hotelmanagement");
 						Dao.setUname("root");
 						Dao.setPass("myPass");
 						Dao.setMySqlEmptyUrl("jdbc:mysql://"+Host+":"+Port+"/");
@@ -565,8 +565,8 @@ public class LastDBWindow extends Application {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 				
-					Group root=new Group();
-					Scene scene=new Scene(root,1200,700);
+					Group group=new Group();
+					Scene scene=new Scene(group);
 					Stage stage=new Stage();
 					stage.setScene(scene);
 //					stageOpenDBChoosingWindow.getIcons().add(

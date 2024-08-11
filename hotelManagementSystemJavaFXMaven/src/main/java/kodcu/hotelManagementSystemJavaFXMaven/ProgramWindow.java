@@ -331,7 +331,7 @@ public class ProgramWindow extends Application {
 					// TODO Auto-generated method stub
 
 					Group rootOpenAddingRoomWindow=new Group();
-					Scene sceneOpenAddingRoomWindow=new Scene(rootOpenAddingRoomWindow,400,400);
+					Scene sceneOpenAddingRoomWindow=new Scene(rootOpenAddingRoomWindow);
 					Stage stageOpenAddingRoomWindow=new Stage();
 					stageOpenAddingRoomWindow.setScene(sceneOpenAddingRoomWindow);
 					stageOpenAddingRoomWindow.getIcons().add(
@@ -375,7 +375,7 @@ public class ProgramWindow extends Application {
 					// TODO Auto-generated method stub
 
 					Group rootOpenAddingReservationWindow=new Group();
-					Scene sceneOpenAddingReservationWindow=new Scene(rootOpenAddingReservationWindow,400,720);
+					Scene sceneOpenAddingReservationWindow=new Scene(rootOpenAddingReservationWindow);
 					Stage stageOpenAddingReservationWindow=new Stage();
 					stageOpenAddingReservationWindow.setScene(sceneOpenAddingReservationWindow);
 					stageOpenAddingReservationWindow.getIcons().add(
@@ -420,7 +420,7 @@ public class ProgramWindow extends Application {
 					// TODO Auto-generated method stub
 
 					Group rootOpenRoomDeletingWindow=new Group();
-					Scene sceneOpenRoomDeletingWindow=new Scene(rootOpenRoomDeletingWindow,400,400);
+					Scene sceneOpenRoomDeletingWindow=new Scene(rootOpenRoomDeletingWindow);
 					Stage stageOpenRoomDeletingWindow=new Stage();
 					stageOpenRoomDeletingWindow.setScene(sceneOpenRoomDeletingWindow);
 					stageOpenRoomDeletingWindow.getIcons().add(
@@ -827,7 +827,7 @@ public class ProgramWindow extends Application {
 					if(tableView.getSelectionModel().getSelectedItem()!=null)
 					{
 						Group rootOpenUpdateReservationWindow=new Group();
-						Scene sceneOpenUpdateReservationWindow=new Scene(rootOpenUpdateReservationWindow,400,720);
+						Scene sceneOpenUpdateReservationWindow=new Scene(rootOpenUpdateReservationWindow);
 						Stage stageOpenUpdateReservationWindow=new Stage();
 						stageOpenUpdateReservationWindow.setScene(sceneOpenUpdateReservationWindow);
 						stageOpenUpdateReservationWindow.getIcons().add(

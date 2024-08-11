@@ -649,7 +649,7 @@ public class AddingReservationWindow extends Application {
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
 					Group rootProgramWindow=new Group();
-					Scene sceneProgramWindow=new Scene(rootProgramWindow,1300,700);
+					Scene sceneProgramWindow=new Scene(rootProgramWindow);
 					Stage stageProgramWindow=new Stage();
 					stageProgramWindow.setScene(sceneProgramWindow);
 //					stageOpenDBChoosingWindow.getIcons().add(
