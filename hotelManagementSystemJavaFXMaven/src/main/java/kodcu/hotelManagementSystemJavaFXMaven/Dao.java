@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -322,21 +321,16 @@ public class Dao {
 	
 	public void createDatabase(String databasename) throws SQLException, ClassNotFoundException 
 	{
-		String query1="create database ";
+		String query1="create database if not exists ?";
 				//String query1=" CREATE DATABASE [?]";
 		
 		try {
 			con=getEmptyCon();
 //			Connection con1 = DriverManager.getConnection(emptyUrl,uname,pass);
 			
-//			PreparedStatement st1= con.prepareStatement(query1);
-//			st1.setString(1, databasename);
-//			st1.executeUpdate();
-			
-			//prepared statement database oluşturamadığı için database'i normal statement ile oluşturdum
-			//bu mysql için işe yaradı ama postgre'de hala database'i manual olarak elle oluşturmak gerekiyor.
-			Statement st=con.createStatement();
-			st.executeUpdate(query1+databasename);
+			PreparedStatement st1= con.prepareStatement(query1);
+			st1.setString(1, databasename);
+			st1.executeUpdate();
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
